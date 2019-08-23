@@ -5,4 +5,22 @@
               android:background="@color/colorPrimary"
               android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/btnFlow"
+        android:text="flow"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/btnGlobal"
+        android:text="global"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/testcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

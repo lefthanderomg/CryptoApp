@@ -1,10 +1,11 @@
 package andrey.murzin.cryptoapp.presetation.feature.main.di.component
 
-import andrey.murzin.cryptoapp.di.provider.AppProvider
+import andrey.murzin.cryptoapp.di.app.provider.AppProvider
 import andrey.murzin.cryptoapp.di.scope.FeatureScope
 import andrey.murzin.cryptoapp.presetation.feature.main.di.module.MainFeatureModule
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
 import andrey.murzin.cryptoapp.presetation.feature.main.view.MainActivity
+import andrey.murzin.cryptoapp.tools.singleton.SingletonHolder
 import dagger.Component
 
 @Component(
@@ -16,9 +17,9 @@ import dagger.Component
     ]
 )
 @FeatureScope
-interface MainComponent : MainToolsProvider {
+abstract class MainComponent : MainToolsProvider {
 
-    fun inject(mainActivity: MainActivity)
+    abstract fun inject(mainActivity: MainActivity)
 
     @Component.Factory
     interface Factory {
@@ -27,9 +28,11 @@ interface MainComponent : MainToolsProvider {
 
     class Initializer private constructor() {
         companion object {
-            fun init(appProvider: AppProvider): MainComponent {
-
-                return DaggerMainComponent.factory().create(appProvider)
+            val componentInstance: SingletonHolder<MainComponent, AppProvider> by lazy {
+                SingletonHolder<MainComponent, AppProvider> {
+                    DaggerMainComponent.factory()
+                        .create(it)
+                }
             }
         }
     }

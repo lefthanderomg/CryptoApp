@@ -1,8 +1,8 @@
 package andrey.murzin.cryptoapp.app
 
 import andrey.murzin.cryptoapp.BuildConfig
-import andrey.murzin.cryptoapp.di.component.AppComponent
-import andrey.murzin.cryptoapp.di.provider.AppProvider
+import andrey.murzin.cryptoapp.di.app.component.AppComponent
+import andrey.murzin.cryptoapp.di.app.provider.AppProvider
 import android.app.Application
 import timber.log.Timber
 
