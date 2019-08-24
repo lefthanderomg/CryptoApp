@@ -3,6 +3,7 @@ package andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.componen
 import andrey.murzin.cryptoapp.di.feature.module.FlowNavigationModule
 import andrey.murzin.cryptoapp.di.scope.FeatureScope
 import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.module.BottomNavigationModule
+import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.provider.BottomNavigationToolsProvider
 import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.view.BottomNavigationFragment
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
 import andrey.murzin.cryptoapp.tools.singleton.SingletonHolder
@@ -18,7 +19,7 @@ import dagger.Component
     ]
 )
 @FeatureScope
-abstract class BottomNavigationComponent {
+abstract class BottomNavigationComponent : BottomNavigationToolsProvider {
 
     abstract fun inject(bottomNavigationFragment: BottomNavigationFragment)
 

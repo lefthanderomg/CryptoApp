@@ -1,0 +1,3 @@
+package andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.provider
+
+interface BottomNavigationToolsProvider

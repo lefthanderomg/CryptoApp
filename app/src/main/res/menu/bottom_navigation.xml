@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tabCurrency"
+        android:contentDescription="@string/crypto_currency"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/crypto_currency" />
+
+    <item
+        android:id="@+id/tabExchange"
+        android:contentDescription="@string/exchange"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/exchange" />
+
+    <item
+        android:id="@+id/tabMetrics"
+        android:contentDescription="@string/global_metrics"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/global_metrics" />
+
+    <item
+        android:id="@+id/tabTool"
+        android:contentDescription="@string/tools"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/tools" />
+
+    <item
+        android:id="@+id/tabPartner"
+        android:contentDescription="@string/partners"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/partners" />
+</menu>

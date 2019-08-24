@@ -4,7 +4,7 @@ import andrey.murzin.cryptoapp.R
 import andrey.murzin.cryptoapp.app.App
 import andrey.murzin.cryptoapp.presetation.feature.main.di.component.MainComponent
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
-import andrey.murzin.cryptoapp.presetation.provider.ActivityToolsHolder
+import andrey.murzin.cryptoapp.presetation.base.ActivityToolsHolder
 import andrey.murzin.cryptoapp.tools.launcher.Launcher
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,8 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), ActivityToolsHolder {
+class MainActivity : AppCompatActivity(),
+    ActivityToolsHolder {
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
