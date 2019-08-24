@@ -1,7 +1,7 @@
 package andrey.murzin.cryptoapp
 
-import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.view.BottomNavigationFragment
-import andrey.murzin.cryptoapp.presetation.feature.cryptocurrency.view.CryptoCurrencyFragment
+import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.BottomNavigationFragment
+import andrey.murzin.cryptoapp.presetation.feature.cryptocurrency.CryptoCurrencyFragment
 import andrey.murzin.cryptoapp.presetation.feature.exchange.view.ExchangeFragment
 import andrey.murzin.cryptoapp.presetation.feature.metrics.view.MetricFragment
 import andrey.murzin.cryptoapp.presetation.feature.partner.view.PartnerFragment
@@ -12,7 +12,8 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 object Screens {
 
     object BottomNavigationFlow : SupportAppScreen() {
-        override fun getFragment(): Fragment = BottomNavigationFragment()
+        override fun getFragment(): Fragment =
+            BottomNavigationFragment()
     }
 
     object ExchangeTab : SupportAppScreen() {
@@ -20,7 +21,8 @@ object Screens {
     }
 
     object CurrencyTab : SupportAppScreen() {
-        override fun getFragment(): Fragment = CryptoCurrencyFragment()
+        override fun getFragment(): Fragment =
+            CryptoCurrencyFragment()
     }
 
     object MetricTab : SupportAppScreen() {

@@ -1,4 +1,4 @@
-package andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.view
+package andrey.murzin.cryptoapp.presetation.feature.bottomnavigation
 
 import andrey.murzin.cryptoapp.R
 import andrey.murzin.cryptoapp.Screens
@@ -12,10 +12,6 @@ import androidx.annotation.IdRes
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 
 class BottomNavigationFragment : BaseFragment(), FragmentBottomNavigationToolsHolder {
-
-    companion object {
-        private const val TAG = "BottomNavigationFragment"
-    }
 
     private val bottomNavigationComponent by lazy {
         val activityToolsHolder = activity as ActivityToolsHolder

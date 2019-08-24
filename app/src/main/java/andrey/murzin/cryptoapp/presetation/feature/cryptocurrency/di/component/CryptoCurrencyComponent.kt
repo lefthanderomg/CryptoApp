@@ -2,6 +2,7 @@ package andrey.murzin.cryptoapp.presetation.feature.cryptocurrency.di.component
 
 import andrey.murzin.cryptoapp.di.scope.ScreenScope
 import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.provider.BottomNavigationToolsProvider
+import andrey.murzin.cryptoapp.presetation.feature.cryptocurrency.CryptoCurrencyFragment
 import andrey.murzin.cryptoapp.tools.singleton.SingletonHolder
 import dagger.Component
 
@@ -13,6 +14,8 @@ import dagger.Component
 )
 @ScreenScope
 abstract class CryptoCurrencyComponent {
+
+    abstract fun inject(cryptoCurrencyFragment: CryptoCurrencyFragment)
 
     @Component.Factory
     interface Factory {
