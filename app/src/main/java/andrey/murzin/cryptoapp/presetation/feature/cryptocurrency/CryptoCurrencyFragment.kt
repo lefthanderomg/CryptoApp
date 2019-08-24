@@ -8,7 +8,6 @@ import andrey.murzin.cryptoapp.presetation.feature.tool.ext.getViewModel
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import javax.inject.Inject
 
 class CryptoCurrencyFragment : BaseFragment() {
@@ -36,5 +35,6 @@ class CryptoCurrencyFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         cryptoCurrencyViewModel = getViewModel(viewModelFactory)
+        cryptoCurrencyViewModel.getCurrencyList()
     }
 }

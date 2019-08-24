@@ -1,7 +1,6 @@
 package andrey.murzin.cryptoapp.presetation.feature.main.di.component
 
 import andrey.murzin.cryptoapp.di.app.provider.AppProvider
-import andrey.murzin.cryptoapp.di.scope.FeatureScope
 import andrey.murzin.cryptoapp.presetation.feature.main.di.module.MainFeatureModule
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
 import andrey.murzin.cryptoapp.presetation.feature.main.view.MainActivity

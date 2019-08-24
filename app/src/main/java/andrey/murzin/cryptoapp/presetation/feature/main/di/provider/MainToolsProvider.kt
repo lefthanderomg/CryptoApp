@@ -1,9 +1,5 @@
 package andrey.murzin.cryptoapp.presetation.feature.main.di.provider
 
-import andrey.murzin.cryptoapp.tools.logger.Logger
-import ru.terrakok.cicerone.Router
+import andrey.murzin.cryptoapp.di.app.provider.AppProvider
 
-interface MainToolsProvider {
-    fun provideRouter() : Router
-    fun provideLogger() : Logger
-}
+interface MainToolsProvider : AppProvider

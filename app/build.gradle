@@ -23,6 +23,7 @@ android {
 
     buildTypes.each {
         it.buildConfigField 'String', 'SANDBOX_API_KEY', SANDBOX_API_KEY
+        it.buildConfigField('String', 'SANDBOX_BASE_URL', SANDBOX_BASE_URL)
     }
 }
 

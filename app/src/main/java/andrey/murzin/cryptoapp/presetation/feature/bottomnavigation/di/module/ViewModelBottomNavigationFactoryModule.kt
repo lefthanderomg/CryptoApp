@@ -2,7 +2,7 @@ package andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.module
 
 import andrey.murzin.cryptoapp.di.feature.factory.ViewModelOwnerFactory
 import andrey.murzin.cryptoapp.di.key.ViewModelKey
-import andrey.murzin.cryptoapp.di.scope.FeatureScope
+import andrey.murzin.cryptoapp.di.scope.FlowScope
 import andrey.murzin.cryptoapp.presetation.feature.cryptocurrency.CryptoCurrencyViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +14,7 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelBottomNavigationFactoryModule {
 
     @Binds
-    @FeatureScope
+    @FlowScope
     abstract fun bindViewModelFactory(
         viewModelOwnerFactory: ViewModelOwnerFactory
     ): ViewModelProvider.Factory
