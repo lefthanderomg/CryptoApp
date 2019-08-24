@@ -6,7 +6,6 @@ import andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.component
 import andrey.murzin.cryptoapp.presetation.provider.ActivityToolsHolder
 import android.os.Bundle
 import android.view.View
-import javax.inject.Inject
 
 class BottomNavigationFragment : BaseFragment() {
 
