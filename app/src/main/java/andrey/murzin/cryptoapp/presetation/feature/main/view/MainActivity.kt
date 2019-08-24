@@ -5,11 +5,11 @@ import andrey.murzin.cryptoapp.app.App
 import andrey.murzin.cryptoapp.presetation.feature.main.di.component.MainComponent
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
 import andrey.murzin.cryptoapp.presetation.provider.ActivityToolsHolder
+import andrey.murzin.cryptoapp.tools.launcher.Launcher
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
     @Inject
-    lateinit var router: Router
+    lateinit var launcher: Launcher
 
     private val navigator: Navigator by lazy {
         object : SupportAppNavigator(this@MainActivity, supportFragmentManager, R.id.container) {
@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity(), ActivityToolsHolder {
         mainComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            launcher.coldStart()
+        }
     }
 
     override fun onDestroy() {

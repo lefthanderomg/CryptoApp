@@ -7,6 +7,7 @@ import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsPro
 import andrey.murzin.cryptoapp.presetation.feature.main.view.MainActivity
 import andrey.murzin.cryptoapp.tools.singleton.SingletonHolder
 import dagger.Component
+import javax.inject.Singleton
 
 @Component(
     dependencies = [
@@ -16,7 +17,7 @@ import dagger.Component
         MainFeatureModule::class
     ]
 )
-@FeatureScope
+@Singleton
 abstract class MainComponent : MainToolsProvider {
 
     abstract fun inject(mainActivity: MainActivity)
