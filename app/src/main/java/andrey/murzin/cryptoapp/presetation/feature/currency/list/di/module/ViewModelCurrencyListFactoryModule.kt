@@ -1,9 +1,9 @@
-package andrey.murzin.cryptoapp.presetation.feature.bottomnavigation.di.module
+package andrey.murzin.cryptoapp.presetation.feature.currency.list.di.module
 
 import andrey.murzin.cryptoapp.di.feature.factory.ViewModelOwnerFactory
 import andrey.murzin.cryptoapp.di.key.ViewModelKey
-import andrey.murzin.cryptoapp.di.scope.FlowScope
-import andrey.murzin.cryptoapp.presetation.feature.cryptocurrency.CryptoCurrencyViewModel
+import andrey.murzin.cryptoapp.di.scope.ScreenScope
+import andrey.murzin.cryptoapp.presetation.feature.currency.list.CurrencyListViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
@@ -11,18 +11,18 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class ViewModelBottomNavigationFactoryModule {
+abstract class ViewModelCurrencyListFactoryModule {
 
     @Binds
-    @FlowScope
+    @ScreenScope
     abstract fun bindViewModelFactory(
         viewModelOwnerFactory: ViewModelOwnerFactory
     ): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
-    @ViewModelKey(CryptoCurrencyViewModel::class)
+    @ViewModelKey(CurrencyListViewModel::class)
     abstract fun bindCryptoCurrencyViewModel(
-        cryptoCurrencyViewModel: CryptoCurrencyViewModel
+        cryptoCurrencyViewModel: CurrencyListViewModel
     ): ViewModel
 }

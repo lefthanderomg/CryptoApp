@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onPause() {
         super.onPause()
-        navigatorHolder.setNavigator(navigator)
+        navigatorHolder.removeNavigator()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

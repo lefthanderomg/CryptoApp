@@ -1,4 +1,4 @@
-package andrey.murzin.cryptoapp.presetation.feature.cryptocurrency
+package andrey.murzin.cryptoapp.presetation.feature.currency.list
 
 import andrey.murzin.cryptoapp.domain.usecase.GetCurrencyListUseCaseImpl
 import andrey.murzin.cryptoapp.tools.logger.Logger
@@ -8,7 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class CryptoCurrencyViewModel @Inject constructor(
+class CurrencyListViewModel @Inject constructor(
     private val getCurrencyListUseCase: GetCurrencyListUseCaseImpl,
     private val logger: Logger
 ) : ViewModel() {
