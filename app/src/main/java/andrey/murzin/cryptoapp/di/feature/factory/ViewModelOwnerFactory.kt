@@ -22,5 +22,4 @@ class ViewModelOwnerFactory @Inject constructor(
             throw RuntimeException(e)
         }
     }
-
 }

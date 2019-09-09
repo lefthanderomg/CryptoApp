@@ -15,9 +15,9 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemIconTint="@color/colorPrimaryDark"
-        android:background="@color/colorPrimary"
-        app:itemTextColor="@color/colorPrimaryDark"
+        app:itemIconTint="@color/btn_tab_item_background"
+        android:background="@color/colorPrimaryDark"
+        app:itemTextColor="@color/btn_tab_item_background"
         app:menu="@menu/bottom_navigation" />
 
 </LinearLayout>
