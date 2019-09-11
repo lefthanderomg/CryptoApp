@@ -1,7 +1,6 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list
 
 import andrey.murzin.cryptoapp.R
-import andrey.murzin.cryptoapp.data.model.CoinModel
 import andrey.murzin.cryptoapp.di.feature.factory.ViewModelOwnerFactory
 import andrey.murzin.cryptoapp.domain.entity.CoinEntity
 import andrey.murzin.cryptoapp.presetation.base.BaseFragment
@@ -13,7 +12,9 @@ import andrey.murzin.cryptoapp.presetation.model.ViewState
 import andrey.murzin.cryptoapp.tools.logger.Logger
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
@@ -33,9 +34,7 @@ class CurrencyListFragment : BaseFragment() {
 
     private lateinit var viewModel: CurrencyListViewModel
 
-
     override fun getLayoutResId(): Int = R.layout.fragment_currency_list
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,13 +57,20 @@ class CurrencyListFragment : BaseFragment() {
     }
 
     private fun initCurrencyList() {
-        val currencyListAdapterDelegate =
-            CurrencyListAdapterDelegate()
-        val delegatesManager = AdapterDelegatesManager<List<CoinEntity>>().apply {
-            addDelegate(currencyListAdapterDelegate)
-        }
+        val currencyListAdapterDelegate = CurrencyListAdapterDelegate(context!!)
+        val delegatesManager =
+            AdapterDelegatesManager<List<CoinEntity>>().apply {
+                addDelegate(currencyListAdapterDelegate)
+            }
         val currencyListAdapter = ListDelegationAdapter(delegatesManager)
         with(rvCurrencyList) {
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                ).apply {
+                    setDrawable(ContextCompat.getDrawable(context, R.drawable.diveder_gone_power)!!)
+                })
             layoutManager = LinearLayoutManager(context)
             adapter = currencyListAdapter
         }

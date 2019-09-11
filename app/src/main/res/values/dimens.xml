@@ -11,10 +11,22 @@
     <dimen name="margin_32dp">32dp</dimen>
     <dimen name="margin_64dp">64dp</dimen>
 
+    <dimen name="size_2dp">2dp</dimen>
+    <dimen name="size_4dp">4dp</dimen>
+    <dimen name="size_6dp">6dp</dimen>
+    <dimen name="size_8dp">8dp</dimen>
+    <dimen name="size_16dp">16dp</dimen>
+    <dimen name="size_20dp">20dp</dimen>
+    <dimen name="size_24dp">24dp</dimen>
+    <dimen name="size_28dp">28dp</dimen>
+    <dimen name="size_32dp">32dp</dimen>
+    <dimen name="size_64dp">64dp</dimen>
+
     <dimen name="text_2sp">2sp</dimen>
     <dimen name="text_4sp">4sp</dimen>
     <dimen name="text_6sp">6sp</dimen>
     <dimen name="text_8sp">8sp</dimen>
+    <dimen name="text_12sp">12sp</dimen>
     <dimen name="text_16sp">16sp</dimen>
     <dimen name="text_20sp">20sp</dimen>
     <dimen name="text_24sp">24sp</dimen>

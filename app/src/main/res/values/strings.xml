@@ -5,4 +5,5 @@
     <string name="global_metrics">Metrics</string>
     <string name="tools">Tools</string>
     <string name="partners">Partners</string>
+    <string name="coin_icon">coin icon</string>
 </resources>

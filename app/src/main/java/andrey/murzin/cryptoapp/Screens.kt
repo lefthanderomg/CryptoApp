@@ -6,7 +6,7 @@ import andrey.murzin.cryptoapp.presetation.feature.currency.list.CurrencyListFra
 import andrey.murzin.cryptoapp.presetation.feature.exchange.view.ExchangeFragment
 import andrey.murzin.cryptoapp.presetation.feature.metrics.view.MetricFragment
 import andrey.murzin.cryptoapp.presetation.feature.partner.view.PartnerFragment
-import andrey.murzin.cryptoapp.presetation.feature.tool.view.ToolFragment
+import andrey.murzin.cryptoapp.presetation.base.ToolFragment
 import androidx.fragment.app.Fragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
@@ -39,6 +39,7 @@ object Screens {
     }
 
     object ToolsTab : SupportAppScreen() {
-        override fun getFragment(): Fragment = ToolFragment()
+        override fun getFragment(): Fragment =
+            ToolFragment()
     }
 }
