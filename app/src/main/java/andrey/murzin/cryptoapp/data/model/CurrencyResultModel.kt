@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class CurrencyResultModel(
     @SerializedName("data")
-    val data: List<CurrencyDataModel?>?
+    val data: List<CoinModel?>?
 )

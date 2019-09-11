@@ -1,8 +1,8 @@
 package andrey.murzin.cryptoapp.domain.usecase
 
-import andrey.murzin.cryptoapp.data.model.CurrencyDataModel
+import andrey.murzin.cryptoapp.domain.entity.CoinEntity
 import io.reactivex.Observable
 
 interface GetCurrencyListUseCase {
-    fun getCurrencyList(): Observable<List<CurrencyDataModel?>>
+    fun getCurrencyList(): Observable<List<CoinEntity>>
 }

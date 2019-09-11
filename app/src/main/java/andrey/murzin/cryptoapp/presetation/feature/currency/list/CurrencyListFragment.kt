@@ -1,8 +1,9 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list
 
 import andrey.murzin.cryptoapp.R
-import andrey.murzin.cryptoapp.data.model.CurrencyDataModel
+import andrey.murzin.cryptoapp.data.model.CoinModel
 import andrey.murzin.cryptoapp.di.feature.factory.ViewModelOwnerFactory
+import andrey.murzin.cryptoapp.domain.entity.CoinEntity
 import andrey.murzin.cryptoapp.presetation.base.BaseFragment
 import andrey.murzin.cryptoapp.presetation.feature.currency.flow.di.provider.CurrencyFlowHolder
 import andrey.murzin.cryptoapp.presetation.feature.currency.list.adapter.CurrencyListAdapterDelegate
@@ -59,7 +60,7 @@ class CurrencyListFragment : BaseFragment() {
     private fun initCurrencyList() {
         val currencyListAdapterDelegate =
             CurrencyListAdapterDelegate()
-        val delegatesManager = AdapterDelegatesManager<List<CurrencyDataModel?>>().apply {
+        val delegatesManager = AdapterDelegatesManager<List<CoinEntity>>().apply {
             addDelegate(currencyListAdapterDelegate)
         }
         val currencyListAdapter = ListDelegationAdapter(delegatesManager)
@@ -75,7 +76,7 @@ class CurrencyListFragment : BaseFragment() {
                     is ViewState.Loading -> {
                         swipeRefreshLayout.isRefreshing = true
                     }
-                    is ViewState.Data<List<CurrencyDataModel?>> -> {
+                    is ViewState.Data<List<CoinEntity>> -> {
                         swipeRefreshLayout.isRefreshing = false
                         currencyListAdapter.items = it.data
                         currencyListAdapter.notifyDataSetChanged()

@@ -1,9 +1,8 @@
 package andrey.murzin.cryptoapp.data.model
 
-
 import com.google.gson.annotations.SerializedName
 
-data class CurrencyDataModel(
+data class CoinModel(
     @SerializedName("circulating_supply")
     val circulatingSupply: Double?,
     @SerializedName("cmc_rank")
