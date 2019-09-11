@@ -1,7 +1,8 @@
 package andrey.murzin.cryptoapp.domain.repository
 
-import io.reactivex.Single
+import andrey.murzin.cryptoapp.data.model.CurrencyDataModel
+import io.reactivex.Observable
 
 interface CurrencyRepository {
-    fun getCurrencyList(): Single<Any>
+    fun getCurrencyList(): Observable<List<CurrencyDataModel?>>
 }

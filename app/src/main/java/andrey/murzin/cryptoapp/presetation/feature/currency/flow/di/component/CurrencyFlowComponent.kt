@@ -4,6 +4,7 @@ import andrey.murzin.cryptoapp.di.feature.module.FlowNavigationModule
 import andrey.murzin.cryptoapp.di.scope.FlowScope
 import andrey.murzin.cryptoapp.presetation.feature.currency.flow.CurrencyFlowFragment
 import andrey.murzin.cryptoapp.presetation.feature.currency.flow.di.provider.CurrencyFlowProvider
+import andrey.murzin.cryptoapp.presetation.feature.currency.list.di.module.ViewModelCurrencyListFactoryModule
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
 import andrey.murzin.cryptoapp.tools.singleton.SingletonHolder
 import dagger.Component
