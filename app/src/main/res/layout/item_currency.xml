@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorDolphin"
         android:textSize="@dimen/text_12sp"
         app:layout_constraintBottom_toBottomOf="@id/imgIcon"
         app:layout_constraintEnd_toStartOf="@+id/imgIcon"
@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/imgIcon"
-        android:layout_width="@dimen/size_24dp"
-        android:layout_height="@dimen/size_24dp"
+        android:layout_width="@dimen/size_32dp"
+        android:layout_height="@dimen/size_32dp"
         android:layout_marginStart="@dimen/margin_28dp"
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginBottom="@dimen/margin_16dp"
@@ -31,5 +31,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_line_chart" />
+
+    <TextView
+        android:id="@+id/tvCoinName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_4dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintStart_toEndOf="@id/imgIcon"
+        app:layout_constraintTop_toTopOf="@id/imgIcon"
+        tools:text="Bitcoin" />
+
+    <TextView
+        android:id="@+id/tvCoinSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_4dp"
+        android:textColor="@color/colorDolphin"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintStart_toEndOf="@id/imgIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tvCoinName"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        app:layout_constraintTop_toTopOf="@id/imgIcon"
+        android:layout_marginEnd="@dimen/margin_28dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
