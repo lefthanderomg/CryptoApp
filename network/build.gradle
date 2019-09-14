@@ -26,9 +26,6 @@ android {
     }
 }
 
-ext.retrofitVersion = '2.4.0'
-ext.rxJavaVersion = '2.1.12'
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

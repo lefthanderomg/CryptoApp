@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">screen-bottomnav</string>
+    <string name="crypto_currency">Currency</string>
+    <string name="exchange">Exchange</string>
+    <string name="global_metrics">Metrics</string>
+    <string name="partners">Partners</string>
+    <string name="coin_icon">coin icon</string>
+</resources>

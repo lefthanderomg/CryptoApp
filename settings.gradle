@@ -1,1 +1,1 @@
-include ':injector', ':core', ':repository', ':network'
+include ':injector', ':core', ':repository', ':network', ':screen-main', ':core-ui', ':screen-bottomnav', ':feature-currency'

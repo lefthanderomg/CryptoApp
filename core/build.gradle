@@ -30,7 +30,7 @@ android {
         it.buildConfigField('String', 'SANDBOX_BASE_URL', SANDBOX_BASE_URL)
     }
 }
-ext.rxJavaVersion = '2.1.12'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -41,4 +41,12 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
+    //cicirone
+    implementation 'ru.terrakok.cicerone:cicerone:5.0.0'
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycleVersion"
 }

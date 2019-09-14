@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#1A1927</color>
+    <color name="colorDolphin">#6C6988</color>
+    <color name="colorAccent">#ffff</color>
+    <color name="colorSaharaSand">#F4E88B</color>
+    <color name="colorPurpleHeart">#531DC7</color>
+    <color name="colorWhite">#FFFF</color>
+    <color name="colorGunPowder">#40405F</color>
+    <color name="colorBlack">#000</color>
+</resources>

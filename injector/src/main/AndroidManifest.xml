@@ -12,7 +12,7 @@
             android:supportsRtl="true"
             android:name=".app.AppCrypto"
             android:theme="@style/AppTheme">
-        <activity android:name="andrey.murzin.cryptoapp.presetation.feature.main.view.MainActivity">
+        <activity android:name="andrey.murzin.screen_main.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
