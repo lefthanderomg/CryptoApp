@@ -1,9 +1,11 @@
 package andrey.murzin.cryptoapp.app
 
+import andrey.murzin.core.App
 import andrey.murzin.cryptoapp.BuildConfig
 import andrey.murzin.cryptoapp.di.app.component.AppComponent
-import andrey.murzin.cryptoapp.di.app.provider.AppProvider
+import andrey.murzin.core.di.provider.AppProvider
 import android.app.Application
+import android.content.Context
 import timber.log.Timber
 
 class AppCrypto : Application(), App {
@@ -19,6 +21,8 @@ class AppCrypto : Application(), App {
             performDebugTools()
         }
     }
+
+    override fun getApplicationContext(): Context = this
 
     override fun getAppComponent(): AppProvider = appComponent
 

@@ -20,11 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildTypes.each {
-        it.buildConfigField 'String', 'SANDBOX_API_KEY', SANDBOX_API_KEY
-        it.buildConfigField('String', 'SANDBOX_BASE_URL', SANDBOX_BASE_URL)
-    }
 }
 
 ext.retrofitVersion = '2.4.0'
@@ -38,6 +33,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //module
     implementation project(':core')
+    implementation project(':repository')
     //core
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

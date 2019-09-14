@@ -1,6 +1,8 @@
 package andrey.murzin.cryptoapp.presetation.feature.main.di.provider
 
-import andrey.murzin.cryptoapp.di.app.provider.AppProvider
-import androidx.lifecycle.ViewModelProvider
+import andrey.murzin.core.di.provider.AppProvider
+import ru.terrakok.cicerone.Router
 
-interface MainToolsProvider : AppProvider
+interface MainToolsProvider : AppProvider {
+    fun provide(): Router
+}

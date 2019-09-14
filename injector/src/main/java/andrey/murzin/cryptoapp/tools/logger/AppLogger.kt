@@ -1,5 +1,6 @@
 package andrey.murzin.cryptoapp.tools.logger
 
+import andrey.murzin.core.utils.Logger
 import timber.log.Timber
 import javax.inject.Inject
 

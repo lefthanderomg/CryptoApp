@@ -1,12 +1,10 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list
 
-import andrey.murzin.core.di.model.Coin
-import andrey.murzin.cryptoapp.data.model.CoinModel
-import andrey.murzin.cryptoapp.domain.entity.CoinEntity
+import andrey.murzin.core.model.Coin
 import andrey.murzin.cryptoapp.domain.usecase.GetCurrencyListUseCaseImpl
 import andrey.murzin.cryptoapp.presetation.base.BaseViewModel
 import andrey.murzin.cryptoapp.presetation.model.ViewState
-import andrey.murzin.cryptoapp.tools.logger.Logger
+import andrey.murzin.core.utils.Logger
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

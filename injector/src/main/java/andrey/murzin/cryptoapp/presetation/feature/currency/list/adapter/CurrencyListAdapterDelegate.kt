@@ -1,8 +1,7 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list.adapter
 
-import andrey.murzin.core.di.model.Coin
+import andrey.murzin.core.model.Coin
 import andrey.murzin.cryptoapp.R
-import andrey.murzin.cryptoapp.domain.entity.CoinEntity
 import andrey.murzin.cryptoapp.presetation.feature.tool.ext.inflate
 import andrey.murzin.cryptoapp.presetation.feature.tool.ext.load
 import andrey.murzin.cryptoapp.presetation.feature.tool.ext.toImageUrl

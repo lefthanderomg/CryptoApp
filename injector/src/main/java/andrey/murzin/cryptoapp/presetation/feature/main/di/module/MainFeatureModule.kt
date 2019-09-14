@@ -1,7 +1,7 @@
 package andrey.murzin.cryptoapp.presetation.feature.main.di.module
 
 import andrey.murzin.cryptoapp.tools.launcher.AppLauncher
-import andrey.murzin.cryptoapp.tools.launcher.Launcher
+import andrey.murzin.core.utils.Launcher
 import dagger.Binds
 import dagger.Module
 

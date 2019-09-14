@@ -1,6 +1,6 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list
 
-import andrey.murzin.core.di.model.Coin
+import andrey.murzin.core.model.Coin
 import andrey.murzin.cryptoapp.R
 import andrey.murzin.cryptoapp.di.feature.factory.ViewModelOwnerFactory
 import andrey.murzin.cryptoapp.presetation.base.BaseFragment
@@ -9,7 +9,7 @@ import andrey.murzin.cryptoapp.presetation.feature.currency.list.adapter.Currenc
 import andrey.murzin.cryptoapp.presetation.feature.currency.list.di.component.CurrencyListComponent
 import andrey.murzin.cryptoapp.presetation.feature.tool.ext.getViewModel
 import andrey.murzin.cryptoapp.presetation.model.ViewState
-import andrey.murzin.cryptoapp.tools.logger.Logger
+import andrey.murzin.core.utils.Logger
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat

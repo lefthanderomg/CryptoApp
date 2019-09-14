@@ -1,6 +1,7 @@
 package andrey.murzin.cryptoapp.presetation.feature.main.di.component
 
-import andrey.murzin.cryptoapp.di.app.provider.AppProvider
+import andrey.murzin.core.di.provider.AppProvider
+import andrey.murzin.cryptoapp.di.app.module.GlobalNavigationModule
 import andrey.murzin.cryptoapp.presetation.feature.main.di.module.MainFeatureModule
 import andrey.murzin.cryptoapp.presetation.feature.main.di.provider.MainToolsProvider
 import andrey.murzin.cryptoapp.presetation.feature.main.view.MainActivity
@@ -13,7 +14,8 @@ import javax.inject.Singleton
         AppProvider::class
     ],
     modules = [
-        MainFeatureModule::class
+        MainFeatureModule::class,
+        GlobalNavigationModule::class
     ]
 )
 @Singleton

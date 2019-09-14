@@ -1,1 +1,1 @@
-include ':injector', ':core'
+include ':injector', ':core', ':repository', ':network'

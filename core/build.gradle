@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -23,6 +25,10 @@ android {
         }
     }
 
+    buildTypes.each {
+        it.buildConfigField 'String', 'SANDBOX_API_KEY', SANDBOX_API_KEY
+        it.buildConfigField('String', 'SANDBOX_BASE_URL', SANDBOX_BASE_URL)
+    }
 }
 ext.rxJavaVersion = '2.1.12'
 dependencies {
@@ -30,6 +36,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //dagger
     implementation 'com.google.dagger:dagger:2.24'
+    kapt 'com.google.dagger:dagger-compiler:2.24'
     //rxjava2
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
