@@ -1,9 +1,9 @@
 package andrey.murzin.screen_currency.flow.di.component
 
 import andrey.murzin.core.di.provider.MainToolsProvider
-import andrey.murzin.screen_currency.di.module.FlowNavigationModule
+import andrey.murzin.screen_currency.flow.di.module.FlowNavigationModule
 import andrey.murzin.core.di.scope.FlowScope
-import andrey.murzin.core.utils.SingletonHolder
+import andrey.murzin.core.utils.singleton.SingletonHolder
 import andrey.murzin.screen_currency.flow.CurrencyFlowFragment
 import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowProvider
 

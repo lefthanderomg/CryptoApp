@@ -1,4 +1,4 @@
-package andrey.murzin.core.utils
+package andrey.murzin.core.utils.singleton
 
 open class SingletonHolder<out T : Any, in A>(creator: (A) -> T) {
     private var creator: ((A) -> T)? = creator

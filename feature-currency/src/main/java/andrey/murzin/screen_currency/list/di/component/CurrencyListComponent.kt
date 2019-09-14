@@ -1,7 +1,7 @@
 package andrey.murzin.screen_currency.list.di.component
 
 import andrey.murzin.core.di.scope.ScreenScope
-import andrey.murzin.core.utils.SingletonHolder
+import andrey.murzin.core.utils.singleton.SingletonHolder
 import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowProvider
 import andrey.murzin.screen_currency.list.CurrencyListFragment
 import andrey.murzin.screen_currency.list.di.module.CurrencyListModule

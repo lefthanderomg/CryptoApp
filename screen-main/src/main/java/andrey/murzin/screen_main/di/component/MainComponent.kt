@@ -4,7 +4,7 @@ import andrey.murzin.core.di.provider.AppProvider
 import andrey.murzin.screen_main.di.module.MainFeatureModule
 import andrey.murzin.core.di.provider.MainToolsProvider
 import andrey.murzin.screen_main.view.MainActivity
-import andrey.murzin.core.utils.SingletonHolder
+import andrey.murzin.core.utils.singleton.SingletonHolder
 import dagger.Component
 import javax.inject.Singleton
 

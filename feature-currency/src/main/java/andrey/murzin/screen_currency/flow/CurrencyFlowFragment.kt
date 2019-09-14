@@ -8,7 +8,7 @@ import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowProvider
 import andrey.murzin.screen_currency.FlowRouter
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.Screens
-import andrey.murzin.screen_currency.di.module.FlowNavigationModule
+import andrey.murzin.screen_currency.flow.di.module.FlowNavigationModule
 import android.os.Bundle
 import android.view.View
 import ru.terrakok.cicerone.Navigator

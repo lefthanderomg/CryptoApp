@@ -1,6 +1,6 @@
 package andrey.murzin.screen_currency.list
 
-import andrey.murzin.core.ViewModelOwnerFactory
+import andrey.murzin.core.di.ViewModelOwnerFactory
 import andrey.murzin.core.model.Coin
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowHolder
