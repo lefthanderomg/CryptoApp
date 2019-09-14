@@ -1,6 +1,8 @@
 package andrey.murzin.cryptoapp.domain.entity
 
+import andrey.murzin.core.di.model.Quote
+
 
 data class QuoteEntity(
-    val usd: USDEntity?
-)
+    override val usd: USDEntity?
+) : Quote

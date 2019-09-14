@@ -1,5 +1,6 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list.adapter
 
+import andrey.murzin.core.di.model.Coin
 import andrey.murzin.cryptoapp.R
 import andrey.murzin.cryptoapp.domain.entity.CoinEntity
 import andrey.murzin.cryptoapp.presetation.feature.tool.ext.inflate
@@ -17,9 +18,9 @@ import javax.inject.Inject
 
 class CurrencyListAdapterDelegate @Inject constructor(
     private val parentContext: Context
-) : AdapterDelegate<List<CoinEntity>>() {
+) : AdapterDelegate<List<Coin>>() {
     override fun onBindViewHolder(
-        items: List<CoinEntity>,
+        items: List<Coin>,
         position: Int,
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>
@@ -30,13 +31,13 @@ class CurrencyListAdapterDelegate @Inject constructor(
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder =
         ViewHolder(parent.inflate(R.layout.item_currency))
 
-    override fun isForViewType(items: List<CoinEntity>, position: Int): Boolean = true
+    override fun isForViewType(items: List<Coin>, position: Int): Boolean = true
 
     inner class ViewHolder(
         override val containerView: View
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun bind(item: CoinEntity) {
+        fun bind(item: Coin) {
             with(containerView) {
                 tvRank.text = item.cmcRank?.toString() ?: ""
                 tvCoinName.text = item.name ?: ""

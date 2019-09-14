@@ -2,7 +2,7 @@ package andrey.murzin.cryptoapp.presetation.feature.currency.list.di.module
 
 import andrey.murzin.cryptoapp.data.repository.CurrencyRepositoryImpl
 import andrey.murzin.core.di.scope.ScreenScope
-import andrey.murzin.cryptoapp.domain.repository.CurrencyRepository
+import andrey.murzin.core.di.repository.CurrencyRepository
 import andrey.murzin.cryptoapp.domain.usecase.GetCurrencyListUseCase
 import andrey.murzin.cryptoapp.domain.usecase.GetCurrencyListUseCaseImpl
 import dagger.Binds

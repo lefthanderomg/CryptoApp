@@ -1,18 +1,20 @@
 package andrey.murzin.cryptoapp.domain.entity
 
+import andrey.murzin.core.di.model.Coin
+
 data class CoinEntity(
-    val circulatingSupply: Double?,
-    val cmcRank: Int?,
-    val dateAdded: String?,
-    val id: Int?,
-    val lastUpdated: String?,
-    val maxSupply: Double?,
-    val name: String?,
-    val numMarketPairs: Int?,
-    val platform: PlatformEntity?,
-    val quote: QuoteEntity?,
-    val slug: String?,
-    val symbol: String?,
-    val tags: List<String?>?,
-    val totalSupply: Double?
-)
+    override val circulatingSupply: Double?,
+    override val cmcRank: Int?,
+    override val dateAdded: String?,
+    override val id: Int?,
+    override val lastUpdated: String?,
+    override val maxSupply: Double?,
+    override val name: String?,
+    override val numMarketPairs: Int?,
+    override val platform: PlatformEntity?,
+    override val quote: QuoteEntity?,
+    override val slug: String?,
+    override val symbol: String?,
+    override val tags: List<String?>?,
+    override val totalSupply: Double?
+) : Coin

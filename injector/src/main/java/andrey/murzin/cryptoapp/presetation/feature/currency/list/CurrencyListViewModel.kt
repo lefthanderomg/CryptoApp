@@ -1,5 +1,6 @@
 package andrey.murzin.cryptoapp.presetation.feature.currency.list
 
+import andrey.murzin.core.di.model.Coin
 import andrey.murzin.cryptoapp.data.model.CoinModel
 import andrey.murzin.cryptoapp.domain.entity.CoinEntity
 import andrey.murzin.cryptoapp.domain.usecase.GetCurrencyListUseCaseImpl
@@ -23,8 +24,8 @@ class CurrencyListViewModel @Inject constructor(
 
     private val refreshSignal = PublishSubject.create<Unit>()
 
-    private val liveDataMap: MutableLiveData<ViewState<List<CoinEntity>>> by lazy {
-        MutableLiveData<ViewState<List<CoinEntity>>>()
+    private val liveDataMap: MutableLiveData<ViewState<List<Coin>>> by lazy {
+        MutableLiveData<ViewState<List<Coin>>>()
     }
 
     init {
@@ -42,7 +43,7 @@ class CurrencyListViewModel @Inject constructor(
         getCurrencyListUseCase.getCurrencyList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .map { ViewState.Data<List<CoinEntity>>(it) as ViewState<List<CoinEntity>> }
+            .map { ViewState.Data<List<Coin>>(it) as ViewState<List<Coin>> }
             .startWith(ViewState.Loading())
             .repeatWhen { refreshSignal }
             .subscribe({

@@ -24,9 +24,12 @@ android {
     }
 
 }
-
+ext.rxJavaVersion = '2.1.12'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //dagger
     implementation 'com.google.dagger:dagger:2.24'
+    //rxjava2
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 }

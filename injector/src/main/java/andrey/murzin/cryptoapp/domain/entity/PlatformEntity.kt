@@ -1,10 +1,12 @@
 package andrey.murzin.cryptoapp.domain.entity
 
+import andrey.murzin.core.di.model.Platform
+
 
 data class PlatformEntity(
-    val id: Int?,
-    val name: String?,
-    val slug: String?,
-    val symbol: String?,
-    val tokenAddress: String?
-)
+    override val id: Int?,
+    override val name: String?,
+    override val slug: String?,
+    override val symbol: String?,
+    override val tokenAddress: String?
+) : Platform
