@@ -35,11 +35,11 @@ class BottomNavigationFragment : Fragment() {
     private fun selectTab(@IdRes idTab: Int) {
         val currentFragment = currentTabFragment
         val screens = when (idTab) {
-            R.id.tabExchange -> Screens.CurrencyTab
+            R.id.tabExchange -> Screens.ExchangeTab
             R.id.tabCurrency -> Screens.CurrencyTab
-            R.id.tabMetrics ->  Screens.CurrencyTab
-            R.id.tabPartner -> Screens.CurrencyTab
-            R.id.tabTool -> Screens.CurrencyTab
+            R.id.tabMetrics ->  Screens.ExchangeTab
+            R.id.tabPartner -> Screens.ExchangeTab
+            R.id.tabTool -> Screens.ExchangeTab
             else -> throw IllegalArgumentException("Screen not found")
         }
         val newFragment = childFragmentManager.findFragmentByTag(screens.screenKey)

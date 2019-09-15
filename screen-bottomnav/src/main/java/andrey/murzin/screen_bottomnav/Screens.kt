@@ -1,18 +1,16 @@
 package andrey.murzin.screen_bottomnav
 
-import andrey.murzin.screen_bottomnav.BottomNavigationFragment
+import andrey.murzin.feature_exchange.ExchangeFragment
 import andrey.murzin.screen_currency.flow.CurrencyFlowFragment
 import androidx.fragment.app.Fragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
 
-//
+    object ExchangeTab : SupportAppScreen() {
+        override fun getFragment(): Fragment = ExchangeFragment()
+    }
 
-//    object ExchangeTab : SupportAppScreen() {
-//        override fun getFragment(): Fragment = ExchangeFragment()
-//    }
-//
     object CurrencyTab : SupportAppScreen() {
         override fun getFragment(): Fragment =
             CurrencyFlowFragment()

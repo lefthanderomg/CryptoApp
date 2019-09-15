@@ -27,21 +27,28 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     def coreDependency = rootProject.ext.coreDependency
     def androidDependency = rootProject.ext.androidDependency
+    def uiDependencies = rootProject.ext.uiDependencies
 
     implementation project(':core')
     implementation project(':core-ui')
-    implementation project(':feature-currency')
-    implementation project(':feature-exchange')
     //core
     implementation coreDependency.kotlin
     implementation androidDependency.appcompat
     implementation androidDependency.material
+    implementation androidDependency.coreKtx
+    implementation androidDependency.constraintlayout
+    implementation androidDependency.swiperefreshlayout
     //dagger
     implementation coreDependency.dagger
     kapt coreDependency.daggerCompiler
     //cicerone
     implementation coreDependency.cicerone
+    //rxJava2
+    implementation coreDependency.rxjava
+    implementation coreDependency.rxandroid
+    implementation coreDependency.rxkotlin
+    //adapter
+    implementation uiDependencies.adapterdelegates
 }
