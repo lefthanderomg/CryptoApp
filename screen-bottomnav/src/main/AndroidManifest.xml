@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="andrey.murzin.screen_bottomnav" />
+<manifest package="andrey.murzin.screen_bottomnav" />

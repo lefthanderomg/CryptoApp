@@ -3,7 +3,6 @@ package andrey.murzin.repository
 import andrey.murzin.core.model.Coin
 import andrey.murzin.core.repository.CurrencyRepository
 import andrey.murzin.network.api.CoinMarketApi
-import andrey.murzin.network.model.CurrencyResultModel
 import andrey.murzin.repository.mapper.CoinMapper
 import io.reactivex.Observable
 import javax.inject.Inject

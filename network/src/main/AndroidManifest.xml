@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="andrey.murzin.network" />
+<manifest package="andrey.murzin.network" />
