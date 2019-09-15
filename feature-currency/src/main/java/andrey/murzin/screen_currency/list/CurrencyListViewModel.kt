@@ -1,11 +1,11 @@
 package andrey.murzin.screen_currency.list
 
 import andrey.murzin.core.model.Coin
-import andrey.murzin.screen_currency.domain.usecase.GetCurrencyListUseCaseImpl
-import andrey.murzin.core_ui.base.BaseViewModel
-import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.core.utils.Logger
-import androidx.lifecycle.MutableLiveData
+import andrey.murzin.core_ui.base.BaseViewModel
+import andrey.murzin.core_ui.base.StateLiveData
+import andrey.murzin.core_ui.model.ViewState
+import andrey.murzin.screen_currency.domain.usecase.GetCurrencyListUseCaseImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -22,8 +22,8 @@ class CurrencyListViewModel @Inject constructor(
 
     private val refreshSignal = PublishSubject.create<Unit>()
 
-    private val liveDataMap: MutableLiveData<ViewState<List<Coin>>> by lazy {
-        MutableLiveData<ViewState<List<Coin>>>()
+    private val currencyLiveData: StateLiveData<List<Coin>> by lazy {
+        StateLiveData<List<Coin>>()
     }
 
     init {
@@ -35,19 +35,20 @@ class CurrencyListViewModel @Inject constructor(
         refreshSignal.onNext(Unit)
     }
 
-    fun getCurrency() = liveDataMap
+    fun getCurrency() = currencyLiveData
 
     private fun getCurrencyList() {
         getCurrencyListUseCase.getCurrencyList()
+            .map { ViewState.Data<List<Coin>>(it) as ViewState<List<Coin>> }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .map { ViewState.Data<List<Coin>>(it) as ViewState<List<Coin>> }
             .startWith(ViewState.Loading())
-            .repeatWhen { refreshSignal }
-            .subscribe({
-                liveDataMap.value = it
-            }, {
+            .onErrorReturn {
                 logger.d("$TAG ${it.printStackTrace()}")
-            }).connect()
+                ViewState.Error(it.message ?: "")
+            }
+            .doOnNext { currencyLiveData.value = it }
+            .repeatWhen { refreshSignal }
+            .subscribe().connect()
     }
 }

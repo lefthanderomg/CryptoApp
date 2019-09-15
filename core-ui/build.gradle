@@ -35,6 +35,7 @@ dependencies {
     //core
     implementation coreDependency.kotlin
     implementation androidDependency.appcompat
+    implementation androidDependency.material
     //dagger
     implementation coreDependency.dagger
     kapt coreDependency.daggerCompiler
