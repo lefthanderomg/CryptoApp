@@ -2,6 +2,8 @@ package andrey.murzin.screen_currency.list.adapter
 
 import andrey.murzin.core.model.Coin
 import andrey.murzin.core_ui.ext.inflate
+import andrey.murzin.core_ui.ext.load
+import andrey.murzin.core_ui.ext.toImageUrl
 import andrey.murzin.core_ui.ext.toPrice
 import andrey.murzin.screen_currency.R
 import android.content.Context
@@ -40,9 +42,9 @@ class CurrencyListAdapterDelegate @Inject constructor(
                 tvCoinName.text = item.name ?: ""
                 tvCoinSymbol.text = item.symbol ?: ""
                 tvPrice.text = item.quote?.usd?.price?.toPrice() ?: ""
-//                item.id?.toImageUrl()?.let { umgUrl ->
-//                    imgIcon.load(context, umgUrl)
-//                }
+                item.id?.toImageUrl()?.let { umgUrl ->
+                    imgIcon.load(parentContext, umgUrl)
+                }
             }
         }
     }

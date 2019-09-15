@@ -40,7 +40,4 @@ dependencies {
     kapt coreDependency.daggerCompiler
     //timber
     implementation coreDependency.timber
-    //glide
-    implementation coreDependency.glide
-    kapt coreDependency.glideCompiler
 }

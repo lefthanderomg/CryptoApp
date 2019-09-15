@@ -47,4 +47,7 @@ dependencies {
     implementation androidDependency.lifecycleViewmodelKtx
     implementation androidDependency.lifecycleLivedata
     implementation androidDependency.lifecycleRuntime
+    //glide
+    implementation coreDependency.glide
+    kapt coreDependency.glideCompiler
 }
