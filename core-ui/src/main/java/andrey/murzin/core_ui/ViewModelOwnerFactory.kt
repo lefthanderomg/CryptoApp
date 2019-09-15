@@ -1,4 +1,4 @@
-package andrey.murzin.core.di
+package andrey.murzin.core_ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

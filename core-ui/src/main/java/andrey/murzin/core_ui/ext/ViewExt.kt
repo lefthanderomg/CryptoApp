@@ -1,4 +1,4 @@
-package andrey.murzin.core.utils.ext
+package andrey.murzin.core_ui.ext
 
 import android.view.LayoutInflater
 import android.view.View

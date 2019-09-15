@@ -1,6 +1,6 @@
 package andrey.murzin.screen_currency.list
 
-import andrey.murzin.core.di.ViewModelOwnerFactory
+import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core.model.Coin
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowHolder
@@ -8,7 +8,7 @@ import andrey.murzin.screen_currency.list.adapter.CurrencyListAdapterDelegate
 import andrey.murzin.screen_currency.list.di.component.CurrencyListComponent
 import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.core.utils.Logger
-import andrey.murzin.core.utils.ext.getViewModel
+import andrey.murzin.core_ui.ext.getViewModel
 import andrey.murzin.screen_currency.R
 import android.os.Bundle
 import android.view.View

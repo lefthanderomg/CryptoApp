@@ -1,8 +1,8 @@
 package andrey.murzin.screen_currency.list.adapter
 
 import andrey.murzin.core.model.Coin
-import andrey.murzin.core.utils.ext.inflate
-import andrey.murzin.core.utils.ext.toPrice
+import andrey.murzin.core_ui.ext.inflate
+import andrey.murzin.core_ui.ext.toPrice
 import andrey.murzin.screen_currency.R
 import android.content.Context
 import android.view.View

@@ -1,4 +1,4 @@
-package andrey.murzin.core.di.key
+package andrey.murzin.core_ui
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

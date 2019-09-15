@@ -4,18 +4,16 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    def globalConfiguration = rootProject.extensions.getByName("ext")
 
-
+    compileSdkVersion globalConfiguration["compileSdkVersion"]
+    buildToolsVersion globalConfiguration["buildToolsVersion"]
     defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["targetSdkVersion"]
+        versionCode globalConfiguration["androidVersionCode"]
+        versionName globalConfiguration["androidVersionName"]
+        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
     }
 
     buildTypes {
@@ -28,23 +26,26 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     //module
     implementation project(':core')
+
+    def coreDependency = rootProject.ext.coreDependency
+    //rxJava2
+    implementation coreDependency.rxjava
+    //core
+    implementation coreDependency.kotlin
     //dagger
-    implementation 'com.google.dagger:dagger:2.24'
-    kapt 'com.google.dagger:dagger-compiler:2.24'
-    //rxjava2
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation coreDependency.dagger
+    kapt coreDependency.daggerCompiler
+
+    def networkDependency = rootProject.ext.networkDependency
     //retrofit2
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    //rxjava2
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation networkDependency.retrofit
+    implementation networkDependency.converterGson
+    implementation networkDependency.adapterRxJava2
     //logger
-    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+    implementation(networkDependency.loggingInterceptor) {
         exclude group: 'org.json', module: 'json'
     }
-
 }

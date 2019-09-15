@@ -1,4 +1,4 @@
-package andrey.murzin.core.utils.ext
+package andrey.murzin.core_ui.ext
 
 private const val IMAGE_URL_32 = "https://s2.coinmarketcap.com/static/img/coins/64x64/%d.png"
 
