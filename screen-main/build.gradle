@@ -32,6 +32,7 @@ dependencies {
     def androidDependency = rootProject.ext.androidDependency
 
     implementation project(':core')
+    implementation project(':core-ui')
     implementation project(':screen-bottomnav')
     //core
     implementation coreDependency.kotlin

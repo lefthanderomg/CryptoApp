@@ -9,17 +9,16 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_bottom_navigation.*
 
-class BottomNavigationFragment : Fragment() {
+class BottomNavigationFragment : BaseFragment() {
 
     private val currentTabFragment: BaseFragment?
         get() = childFragmentManager.fragments.firstOrNull { !it.isHidden } as? BaseFragment
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_bottom_navigation, container, false)
+    override fun getLayoutResId(): Int = R.layout.fragment_bottom_navigation
+
+    override fun onBackPressed() {
+        currentTabFragment?.onBackPressed()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

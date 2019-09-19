@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency.flow.di.module
+package andrey.murzin.screen_currency.screen.flow.di.module
 
 import andrey.murzin.core.di.scope.FlowScope
 import andrey.murzin.screen_currency.FlowRouter

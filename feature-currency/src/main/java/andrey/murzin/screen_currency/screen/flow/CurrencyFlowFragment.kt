@@ -1,14 +1,14 @@
-package andrey.murzin.screen_currency.flow
+package andrey.murzin.screen_currency.screen.flow
 
 import andrey.murzin.core.di.holder.ActivityToolsHolder
 import andrey.murzin.core_ui.base.BaseFragment
-import andrey.murzin.screen_currency.flow.di.component.CurrencyFlowComponent
-import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowHolder
-import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowProvider
+import andrey.murzin.screen_currency.screen.flow.di.component.CurrencyFlowComponent
+import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowHolder
+import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
 import andrey.murzin.screen_currency.FlowRouter
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.Screens
-import andrey.murzin.screen_currency.flow.di.module.FlowNavigationModule
+import andrey.murzin.screen_currency.screen.flow.di.module.FlowNavigationModule
 import android.os.Bundle
 import android.view.View
 import ru.terrakok.cicerone.Navigator
@@ -21,6 +21,7 @@ class CurrencyFlowFragment : BaseFragment(), CurrencyFlowHolder {
 
     @Inject
     lateinit var flowRouter: FlowRouter
+
     @Inject
     @field:[Named(FlowNavigationModule.FlOW)]
     lateinit var navigatorHolder: NavigatorHolder
@@ -31,10 +32,17 @@ class CurrencyFlowFragment : BaseFragment(), CurrencyFlowHolder {
         }
     }
 
+    private val currentFragment: BaseFragment?
+        get() = childFragmentManager.findFragmentById(R.id.container_flow) as? BaseFragment
+
     override fun getLayoutResId(): Int = R.layout.fragment_cryptocurrency_flow
 
     override fun clearScope() {
         CurrencyFlowComponent.Initializer.componentInstance.clearInstance()
+    }
+
+    override fun onBackPressed() {
+        currentFragment?.onBackPressed() ?: flowRouter.finishFlow()
     }
 
     override fun inject() {

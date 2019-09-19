@@ -1,7 +1,7 @@
 package andrey.murzin.screen_bottomnav
 
 import andrey.murzin.feature_exchange.ExchangeFragment
-import andrey.murzin.screen_currency.flow.CurrencyFlowFragment
+import andrey.murzin.screen_currency.screen.flow.CurrencyFlowFragment
 import androidx.fragment.app.Fragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 

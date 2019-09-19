@@ -8,4 +8,8 @@ class ExchangeFragment : BaseFragment(){
     override fun inject() {}
 
     override fun clearScope() {}
+
+    override fun onBackPressed() {
+
+    }
 }

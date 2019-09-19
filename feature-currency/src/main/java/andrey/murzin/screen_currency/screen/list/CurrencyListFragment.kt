@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency.list
+package andrey.murzin.screen_currency.screen.list
 
 import andrey.murzin.core.model.Coin
 import andrey.murzin.core.utils.Logger
@@ -8,9 +8,9 @@ import andrey.murzin.core_ui.ext.getViewModel
 import andrey.murzin.core_ui.ext.showMessage
 import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.screen_currency.R
-import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowHolder
-import andrey.murzin.screen_currency.list.adapter.CurrencyListAdapterDelegate
-import andrey.murzin.screen_currency.list.di.component.CurrencyListComponent
+import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowHolder
+import andrey.murzin.screen_currency.screen.list.adapter.CurrencyListAdapterDelegate
+import andrey.murzin.screen_currency.screen.list.di.component.CurrencyListComponent
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -53,12 +53,20 @@ class CurrencyListFragment : BaseFragment() {
         ).inject(this)
     }
 
+    override fun onBackPressed() {
+
+    }
+
     override fun clearScope() {
         CurrencyListComponent.Initializer.componentInstance.clearInstance()
     }
 
     private fun initCurrencyList() {
-        val currencyListAdapterDelegate = CurrencyListAdapterDelegate(context!!)
+        val currencyListAdapterDelegate = CurrencyListAdapterDelegate(
+            context!!
+        ) {
+            viewModel.goCoinDetail()
+        }
         val delegatesManager =
             AdapterDelegatesManager<List<Coin>>().apply {
                 addDelegate(currencyListAdapterDelegate)

@@ -6,4 +6,5 @@
     <string name="global_metrics">Metrics</string>
     <string name="partners">Partners</string>
     <string name="coin_icon">coin icon</string>
+    <string name="test"><font size="30">Hint here!</font></string>
 </resources>

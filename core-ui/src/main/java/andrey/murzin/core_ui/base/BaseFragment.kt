@@ -12,9 +12,11 @@ abstract class BaseFragment : Fragment() {
     @LayoutRes
     abstract fun getLayoutResId(): Int
 
-    abstract fun inject()
+    open fun inject() {}
 
-    abstract fun clearScope()
+    open fun clearScope() {}
+
+    abstract fun onBackPressed()
 
     override fun onCreateView(
         inflater: LayoutInflater,

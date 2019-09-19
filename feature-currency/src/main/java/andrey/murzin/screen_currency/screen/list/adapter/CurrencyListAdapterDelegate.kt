@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency.list.adapter
+package andrey.murzin.screen_currency.screen.list.adapter
 
 import andrey.murzin.core.model.Coin
 import andrey.murzin.core_ui.ext.inflate
@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.item_currency.view.*
 import javax.inject.Inject
 
 class CurrencyListAdapterDelegate @Inject constructor(
-    private val parentContext: Context
+    private val parentContext: Context,
+    private val clickListener: () -> Unit
 ) : AdapterDelegate<List<Coin>>() {
     override fun onBindViewHolder(
         items: List<Coin>,
@@ -35,6 +36,12 @@ class CurrencyListAdapterDelegate @Inject constructor(
     inner class ViewHolder(
         override val containerView: View
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+
+        init {
+            containerView.setOnClickListener {
+                clickListener.invoke()
+            }
+        }
 
         fun bind(item: Coin) {
             with(containerView) {

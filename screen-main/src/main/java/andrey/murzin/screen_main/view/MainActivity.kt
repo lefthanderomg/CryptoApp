@@ -1,11 +1,12 @@
 package andrey.murzin.screen_main.view
 
 import andrey.murzin.core.App
+import andrey.murzin.core.di.holder.ActivityToolsHolder
+import andrey.murzin.core.di.provider.MainToolsProvider
 import andrey.murzin.core.utils.Launcher
+import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.screen_main.R
 import andrey.murzin.screen_main.di.component.MainComponent
-import andrey.murzin.core.di.provider.MainToolsProvider
-import andrey.murzin.core.di.holder.ActivityToolsHolder
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.terrakok.cicerone.Navigator
@@ -33,6 +34,9 @@ class MainActivity : AppCompatActivity(),
         )
     }
 
+    private val currentFragment: BaseFragment?
+        get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFragment
+
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
@@ -41,6 +45,10 @@ class MainActivity : AppCompatActivity(),
     override fun onPause() {
         super.onPause()
         navigatorHolder.removeNavigator()
+    }
+
+    override fun onBackPressed() {
+        currentFragment?.onBackPressed() ?: super.onBackPressed()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

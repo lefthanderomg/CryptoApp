@@ -22,7 +22,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+    sourceSets {
+        androidTest.setRoot('src/test')
+        androidTest {
+            java.srcDirs = ['src/main/java/test']
+        }
+    }
 }
 
 dependencies {
@@ -39,4 +47,8 @@ dependencies {
     //rxJava2
     implementation coreDependency.rxjava
 
+    def testDependency = rootProject.ext.testDependency
+    testImplementation testDependency.junit
+    testImplementation testDependency.runner
+    testImplementation testDependency.mockito
 }

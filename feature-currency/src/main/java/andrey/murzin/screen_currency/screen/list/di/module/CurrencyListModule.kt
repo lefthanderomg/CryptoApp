@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency.list.di.module
+package andrey.murzin.screen_currency.screen.list.di.module
 
 import andrey.murzin.core.di.scope.ScreenScope
 import andrey.murzin.screen_currency.domain.usecase.GetCurrencyListUseCase

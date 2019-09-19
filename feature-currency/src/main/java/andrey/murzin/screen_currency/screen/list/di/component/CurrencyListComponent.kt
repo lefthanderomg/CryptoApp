@@ -1,11 +1,11 @@
-package andrey.murzin.screen_currency.list.di.component
+package andrey.murzin.screen_currency.screen.list.di.component
 
 import andrey.murzin.core.di.scope.ScreenScope
 import andrey.murzin.core.utils.singleton.SingletonHolder
-import andrey.murzin.screen_currency.flow.di.provider.CurrencyFlowProvider
-import andrey.murzin.screen_currency.list.CurrencyListFragment
-import andrey.murzin.screen_currency.list.di.module.CurrencyListModule
-import andrey.murzin.screen_currency.list.di.module.ViewModelCurrencyListFactoryModule
+import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
+import andrey.murzin.screen_currency.screen.list.CurrencyListFragment
+import andrey.murzin.screen_currency.screen.list.di.module.CurrencyListModule
+import andrey.murzin.screen_currency.screen.list.di.module.ViewModelCurrencyListFactoryModule
 import dagger.Component
 
 
