@@ -1,7 +1,7 @@
 package andrey.murzin.repository.di.module
 
-import andrey.murzin.core.repository.CurrencyRepository
-import andrey.murzin.repository.CurrencyRepositoryImpl
+import andrey.murzin.core.repository.CoinRepository
+import andrey.murzin.repository.CoinRepositoryImpl
 import dagger.Binds
 import dagger.Module
 
@@ -10,6 +10,6 @@ interface RepositoryModule {
 
     @Binds
     fun bindCurrencyRepository(
-        currencyRepositoryImpl: CurrencyRepositoryImpl
-    ): CurrencyRepository
+        currencyRepositoryImpl: CoinRepositoryImpl
+    ): CoinRepository
 }

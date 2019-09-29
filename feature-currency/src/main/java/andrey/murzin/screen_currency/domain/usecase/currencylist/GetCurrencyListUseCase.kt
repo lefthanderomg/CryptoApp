@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency.domain.usecase
+package andrey.murzin.screen_currency.domain.usecase.currencylist
 
 import andrey.murzin.core.model.Coin
 import io.reactivex.Observable

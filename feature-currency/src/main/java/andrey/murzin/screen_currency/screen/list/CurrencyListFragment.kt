@@ -30,6 +30,7 @@ class CurrencyListFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelOwnerFactory: ViewModelOwnerFactory
+
     @Inject
     lateinit var logger: Logger
 
@@ -64,8 +65,8 @@ class CurrencyListFragment : BaseFragment() {
     private fun initCurrencyList() {
         val currencyListAdapterDelegate = CurrencyListAdapterDelegate(
             context!!
-        ) {
-            viewModel.goCoinDetail()
+        ) {id->
+            viewModel.goCoinDetail(id)
         }
         val delegatesManager =
             AdapterDelegatesManager<List<Coin>>().apply {

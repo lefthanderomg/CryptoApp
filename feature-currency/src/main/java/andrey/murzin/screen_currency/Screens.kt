@@ -12,7 +12,7 @@ object Screens {
         override fun getFragment(): Fragment = CurrencyListFragment()
     }
 
-    object CoinDetailScreen : SupportAppScreen(){
-        override fun getFragment(): Fragment = CoinDetailFragment()
+    data class CoinDetailScreen(val id: Int) : SupportAppScreen(){
+        override fun getFragment(): Fragment = CoinDetailFragment.create(id)
     }
 }

@@ -7,7 +7,7 @@ import andrey.murzin.core_ui.base.StateLiveData
 import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.screen_currency.FlowRouter
 import andrey.murzin.screen_currency.Screens
-import andrey.murzin.screen_currency.domain.usecase.GetCurrencyListUseCaseImpl
+import andrey.murzin.screen_currency.domain.usecase.currencylist.GetCurrencyListUseCaseImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -38,8 +38,10 @@ class CurrencyListViewModel @Inject constructor(
         refreshSignal.onNext(Unit)
     }
 
-    fun goCoinDetail() {
-        flowRouter.navigateTo(Screens.CoinDetailScreen)
+    fun goCoinDetail(id: Int?) {
+        id?.let {
+            flowRouter.navigateTo(Screens.CoinDetailScreen(id))
+        }
     }
 
     fun getCurrency() = currencyLiveData

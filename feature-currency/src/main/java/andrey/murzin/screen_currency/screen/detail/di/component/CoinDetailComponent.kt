@@ -1,17 +1,20 @@
-package andrey.murzin.screen_currency.screen.detail.di
+package andrey.murzin.screen_currency.screen.detail.di.component
 
 import andrey.murzin.core.di.scope.ScreenScope
 import andrey.murzin.core.utils.singleton.SingletonHolder
 import andrey.murzin.screen_currency.screen.detail.CoinDetailFragment
+import andrey.murzin.screen_currency.screen.detail.di.module.CoinDetailModule
+import andrey.murzin.screen_currency.screen.detail.di.module.ViewModelCoinInfoFactoryModule
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
-import andrey.murzin.screen_currency.screen.list.CurrencyListFragment
-import andrey.murzin.screen_currency.screen.list.di.component.CurrencyListComponent
-import andrey.murzin.screen_currency.screen.list.di.component.DaggerCurrencyListComponent
 import dagger.Component
 
 @Component(
     dependencies = [
         CurrencyFlowProvider::class
+    ],
+    modules = [
+        CoinDetailModule::class,
+        ViewModelCoinInfoFactoryModule::class
     ]
 )
 @ScreenScope

@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class CurrencyListAdapterDelegate @Inject constructor(
     private val parentContext: Context,
-    private val clickListener: () -> Unit
+    private val clickListener: (Int?) -> Unit
 ) : AdapterDelegate<List<Coin>>() {
     override fun onBindViewHolder(
         items: List<Coin>,
@@ -37,13 +37,16 @@ class CurrencyListAdapterDelegate @Inject constructor(
         override val containerView: View
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
+        private lateinit var data : Coin
+
         init {
             containerView.setOnClickListener {
-                clickListener.invoke()
+                clickListener.invoke(data.id)
             }
         }
 
         fun bind(item: Coin) {
+            data = item
             with(containerView) {
                 tvRank.text = item.cmcRank?.toString() ?: ""
                 tvCoinName.text = item.name ?: ""
