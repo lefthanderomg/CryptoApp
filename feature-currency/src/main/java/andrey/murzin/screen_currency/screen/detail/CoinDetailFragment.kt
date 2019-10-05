@@ -1,16 +1,20 @@
 package andrey.murzin.screen_currency.screen.detail
 
+import andrey.murzin.core.model.CoinDetail
 import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core_ui.base.BaseFragment
-import andrey.murzin.core_ui.ext.getViewModel
+import andrey.murzin.core_ui.ext.*
+import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.core_utils.argument
-import andrey.murzin.screen_currency.FlowRouter
+import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.screen.detail.di.component.CoinDetailComponent
+import andrey.murzin.screen_currency.screen.detail.di.component.CoinDetailProvider
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowHolder
-import andrey.murzin.screen_currency.screen.list.CurrencyListViewModel
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.fragment_coin_detail.*
 import javax.inject.Inject
 
 class CoinDetailFragment : BaseFragment() {
@@ -41,7 +45,10 @@ class CoinDetailFragment : BaseFragment() {
     override fun inject() {
         val parentComponent = parentFragment as CurrencyFlowHolder
         CoinDetailComponent.Initializer.componentInstance.init(
-            parentComponent.getCurrentFlowProvider()
+            CoinDetailProvider(
+                parentComponent.getCurrentFlowProvider(),
+                idCoin
+            )
         ).inject(this)
     }
 
@@ -56,6 +63,41 @@ class CoinDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = getViewModel(viewModelOwnerFactory)
-        viewModel.getCoinInfo(idCoin)
+        viewModel.getCoinInfoLiveData().observe(
+            viewLifecycleOwner,
+            Observer {
+                when (it) {
+                    is ViewState.Loading -> {
+                        showLoad(true)
+                    }
+                    is ViewState.Data<CoinDetail> -> {
+                        showData(it.data)
+                        showLoad(false)
+                    }
+                    is ViewState.Error -> {
+                        showLoad(false)
+                        showMessage(it.message)
+                    }
+                }
+            }
+        )
+        btnBuy.setOnClickListener {
+            viewModel.buy()
+        }
+    }
+
+    private fun showLoad(flag: Boolean) {
+        progressBar.setVisible(flag)
+        btnBuy.setVisible(flag.not())
+    }
+
+    private fun showData(data: CoinDetail) {
+        context?.let {
+            imgIcon.load(it, data.logo ?: "")
+        }
+        tvName.text = data.name ?: ""
+        tvSymbol.text = data.symbol ?: ""
+        tvPrice.text = data.usd?.price?.toPrice() ?: ""
+        tvDescription.text = data.description ?: ""
     }
 }

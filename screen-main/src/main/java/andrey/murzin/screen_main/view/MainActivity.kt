@@ -23,9 +23,11 @@ class MainActivity : AppCompatActivity(),
     lateinit var launcher: Launcher
 
     private val navigator: Navigator by lazy {
-        object : SupportAppNavigator(this@MainActivity, supportFragmentManager, R.id.container) {
-
-        }
+        object : SupportAppNavigator(
+            this@MainActivity,
+            supportFragmentManager,
+            R.id.container
+        ) {}
     }
 
     private val mainComponent: MainComponent by lazy {
@@ -55,7 +57,6 @@ class MainActivity : AppCompatActivity(),
         mainComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         if (savedInstanceState == null) {
             launcher.coldStart()
         }

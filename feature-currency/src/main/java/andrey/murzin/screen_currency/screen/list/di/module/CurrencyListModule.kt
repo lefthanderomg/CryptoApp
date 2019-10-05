@@ -5,6 +5,8 @@ import andrey.murzin.screen_currency.domain.usecase.coininfo.GetCoinInfoUseCase
 import andrey.murzin.screen_currency.domain.usecase.coininfo.GetCoinInfoUseCaseImpl
 import andrey.murzin.screen_currency.domain.usecase.currencylist.GetCurrencyListUseCase
 import andrey.murzin.screen_currency.domain.usecase.currencylist.GetCurrencyListUseCaseImpl
+import andrey.murzin.screen_currency.domain.usecase.savecoin.SaveCoinUseCase
+import andrey.murzin.screen_currency.domain.usecase.savecoin.SaveCoinUseCaseImpl
 import dagger.Binds
 import dagger.Module
 
@@ -16,4 +18,10 @@ abstract class CurrencyListModule {
     abstract fun bindGetCurrencyListUseCase(
         getCurrencyListUseCase: GetCurrencyListUseCaseImpl
     ): GetCurrencyListUseCase
+
+    @Binds
+    @ScreenScope
+    abstract fun bindSaveCoinUseCase(
+        saveCoinUseCase: SaveCoinUseCaseImpl
+    ): SaveCoinUseCase
 }

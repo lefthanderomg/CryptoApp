@@ -1,0 +1,3 @@
+package andrey.murzin.feature_purchase.screen.flow.provider
+
+interface PurchaseFlowProvider

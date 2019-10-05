@@ -1,7 +1,7 @@
-package andrey.murzin.screen_currency.screen.flow.di.module
+package andrey.murzin.core.di.module
 
 import andrey.murzin.core.di.scope.FlowScope
-import andrey.murzin.screen_currency.FlowRouter
+import andrey.murzin.core.routing.FlowRouter
 import dagger.Module
 import dagger.Provides
 import ru.terrakok.cicerone.Cicerone
@@ -18,7 +18,9 @@ class FlowNavigationModule {
 
     @Provides
     @FlowScope
-    fun provideCicerone(router: Router): Cicerone<FlowRouter> = Cicerone.create(FlowRouter(router))
+    fun provideCicerone(router: Router): Cicerone<FlowRouter> = Cicerone.create(
+        FlowRouter(router)
+    )
 
     @Provides
     @FlowScope

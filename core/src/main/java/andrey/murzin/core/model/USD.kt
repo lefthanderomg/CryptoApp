@@ -1,6 +1,6 @@
 package andrey.murzin.core.model
 
-interface USDEntity {
+interface USD {
     val lastUpdated: String?
     val marketCap: Double?
     val percentChange1h: Double?

@@ -35,4 +35,6 @@ dependencies {
     //core
     implementation coreDependency.kotlin
     implementation androidDependency.appcompat
+    //cicerone
+    implementation coreDependency.cicerone
 }

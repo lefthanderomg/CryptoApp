@@ -65,8 +65,8 @@ class CurrencyListFragment : BaseFragment() {
     private fun initCurrencyList() {
         val currencyListAdapterDelegate = CurrencyListAdapterDelegate(
             context!!
-        ) {id->
-            viewModel.goCoinDetail(id)
+        ) {coin->
+            viewModel.goCoinDetail(coin)
         }
         val delegatesManager =
             AdapterDelegatesManager<List<Coin>>().apply {

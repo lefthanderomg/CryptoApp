@@ -22,11 +22,13 @@ class BottomNavigationFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(bottomNav) {
-            if (currentTabFragment == null) selectTab(selectedItemId)
-            setOnNavigationItemSelectedListener {
-                selectTab(it.itemId)
-                true
+        if (childFragmentManager.fragments.isEmpty()) {
+            with(bottomNav) {
+                if (currentTabFragment == null) selectTab(selectedItemId)
+                setOnNavigationItemSelectedListener {
+                    selectTab(it.itemId)
+                    true
+                }
             }
         }
     }

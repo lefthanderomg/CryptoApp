@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency
+package andrey.murzin.core.routing
 
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppScreen

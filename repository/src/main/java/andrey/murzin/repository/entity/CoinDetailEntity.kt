@@ -1,6 +1,7 @@
 package andrey.murzin.repository.entity
 
 import andrey.murzin.core.model.CoinDetail
+import andrey.murzin.core.model.USD
 import andrey.murzin.core.model.Url
 
 data class CoinDetailEntity(
@@ -11,5 +12,6 @@ data class CoinDetailEntity(
     override val symbol: String? = null,
     override val slug: String? = null,
     override val description: String? = null,
-    override val dateAdded: String? = null
+    override val dateAdded: String? = null,
+    override val usd: USD? = null
 ) : CoinDetail

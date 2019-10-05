@@ -4,9 +4,13 @@ import andrey.murzin.core.model.Coin
 import andrey.murzin.core.model.CoinDetail
 import andrey.murzin.core.repository.CoinRepository
 import andrey.murzin.network.api.CoinMarketApi
+import andrey.murzin.network.model.CoinDetailModel
 import andrey.murzin.repository.mapper.CoinDetailMapper
 import andrey.murzin.repository.mapper.CoinMapper
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.functions.BiFunction
+import io.reactivex.subjects.ReplaySubject
 import javax.inject.Inject
 
 class CoinRepositoryImpl @Inject constructor(
@@ -14,6 +18,13 @@ class CoinRepositoryImpl @Inject constructor(
     private val coinMapper: CoinMapper,
     private val coinDetailMapper: CoinDetailMapper
 ) : CoinRepository {
+
+    private val coinCache: ReplaySubject<Coin> = ReplaySubject.createWithSize(1)
+
+    override fun saveCoin(coin: Coin): Completable =
+        Completable.fromCallable {
+            coinCache.onNext(coin)
+        }
 
     override fun getCurrencyList(): Observable<List<Coin>> =
         coinMarketApi.getCurrencyList()
@@ -29,6 +40,11 @@ class CoinRepositoryImpl @Inject constructor(
             .toObservable()
 
     override fun getCoinInfo(id: Int): Observable<CoinDetail> =
-        coinMarketApi.getCoinInfo(id)
-            .map { coinDetailMapper.toEntity(it) }
+        Observable.zip(
+            coinMarketApi.getCoinInfo(id),
+            coinCache,
+            BiFunction { coinDetailModel: CoinDetailModel, coin: Coin ->
+                return@BiFunction coinDetailMapper.toEntity(coinDetailModel, coin)
+            }
+        )
 }

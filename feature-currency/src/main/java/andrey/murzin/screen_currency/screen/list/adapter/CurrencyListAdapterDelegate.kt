@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class CurrencyListAdapterDelegate @Inject constructor(
     private val parentContext: Context,
-    private val clickListener: (Int?) -> Unit
+    private val clickListener: (Coin) -> Unit
 ) : AdapterDelegate<List<Coin>>() {
     override fun onBindViewHolder(
         items: List<Coin>,
@@ -41,7 +41,7 @@ class CurrencyListAdapterDelegate @Inject constructor(
 
         init {
             containerView.setOnClickListener {
-                clickListener.invoke(data.id)
+                clickListener.invoke(data)
             }
         }
 

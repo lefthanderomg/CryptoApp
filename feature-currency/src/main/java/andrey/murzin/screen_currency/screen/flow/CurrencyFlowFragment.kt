@@ -1,14 +1,14 @@
 package andrey.murzin.screen_currency.screen.flow
 
 import andrey.murzin.core.di.holder.ActivityToolsHolder
+import andrey.murzin.core.di.module.FlowNavigationModule
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.screen_currency.screen.flow.di.component.CurrencyFlowComponent
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowHolder
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
-import andrey.murzin.screen_currency.FlowRouter
+import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.Screens
-import andrey.murzin.screen_currency.screen.flow.di.module.FlowNavigationModule
 import android.os.Bundle
 import android.view.View
 import ru.terrakok.cicerone.Navigator
@@ -27,13 +27,13 @@ class CurrencyFlowFragment : BaseFragment(), CurrencyFlowHolder {
     lateinit var navigatorHolder: NavigatorHolder
 
     private val navigator: Navigator by lazy {
-        object : SupportAppNavigator(activity, childFragmentManager, R.id.container_flow) {
+        object : SupportAppNavigator(activity, childFragmentManager, R.id.containerFlow) {
 
         }
     }
 
     private val currentFragment: BaseFragment?
-        get() = childFragmentManager.findFragmentById(R.id.container_flow) as? BaseFragment
+        get() = childFragmentManager.findFragmentById(R.id.containerFlow) as? BaseFragment
 
     override fun getLayoutResId(): Int = R.layout.fragment_cryptocurrency_flow
 
@@ -53,7 +53,9 @@ class CurrencyFlowFragment : BaseFragment(), CurrencyFlowHolder {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (savedInstanceState == null) flowRouter.newRootScreen(Screens.CurrencyListScreen)
+        if (childFragmentManager.fragments.isEmpty()) {
+            flowRouter.newRootScreen(Screens.CurrencyListScreen)
+        }
     }
 
     override fun onResume() {

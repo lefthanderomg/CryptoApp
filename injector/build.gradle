@@ -41,4 +41,5 @@ dependencies {
     kapt coreDependency.daggerCompiler
     //timber
     implementation coreDependency.timber
+
 }

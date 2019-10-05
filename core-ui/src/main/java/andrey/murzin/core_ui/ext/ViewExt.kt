@@ -9,3 +9,7 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false):
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
 }
 
+fun View.setVisible(flag:Boolean) {
+    if (flag) this.visibility = View.VISIBLE
+    else this.visibility = View.INVISIBLE
+}

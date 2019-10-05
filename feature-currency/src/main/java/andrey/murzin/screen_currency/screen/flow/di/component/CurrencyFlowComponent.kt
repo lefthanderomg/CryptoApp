@@ -1,7 +1,7 @@
 package andrey.murzin.screen_currency.screen.flow.di.component
 
+import andrey.murzin.core.di.module.FlowNavigationModule
 import andrey.murzin.core.di.provider.MainToolsProvider
-import andrey.murzin.screen_currency.screen.flow.di.module.FlowNavigationModule
 import andrey.murzin.core.di.scope.FlowScope
 import andrey.murzin.core.utils.singleton.SingletonHolder
 import andrey.murzin.screen_currency.screen.flow.CurrencyFlowFragment
@@ -11,12 +11,8 @@ import dagger.Component
 
 
 @Component(
-    dependencies = [
-        MainToolsProvider::class
-    ],
-    modules = [
-        FlowNavigationModule::class
-    ]
+    dependencies = [MainToolsProvider::class],
+    modules = [FlowNavigationModule::class]
 )
 @FlowScope
 abstract class CurrencyFlowComponent : CurrencyFlowProvider {

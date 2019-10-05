@@ -9,6 +9,6 @@ class AppLauncher @Inject constructor(
     private val router: Router
 ) : Launcher {
     override fun coldStart() {
-        router.newRootScreen(Screens.BottomNavigationFlow)
+        router.newRootChain(Screens.BottomNavigationFlow)
     }
 }

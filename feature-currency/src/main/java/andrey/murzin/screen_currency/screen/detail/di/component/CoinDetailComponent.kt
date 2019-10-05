@@ -6,6 +6,7 @@ import andrey.murzin.screen_currency.screen.detail.CoinDetailFragment
 import andrey.murzin.screen_currency.screen.detail.di.module.CoinDetailModule
 import andrey.murzin.screen_currency.screen.detail.di.module.ViewModelCoinInfoFactoryModule
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
+import dagger.BindsInstance
 import dagger.Component
 
 @Component(
@@ -23,15 +24,15 @@ abstract class CoinDetailComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(provider: CurrencyFlowProvider): CoinDetailComponent
+        fun create(provider: CurrencyFlowProvider, @BindsInstance kek: Int): CoinDetailComponent
     }
 
     class Initializer private constructor() {
         companion object {
-            val componentInstance: SingletonHolder<CoinDetailComponent, CurrencyFlowProvider> by lazy {
-                SingletonHolder<CoinDetailComponent, CurrencyFlowProvider> {
+            val componentInstance: SingletonHolder<CoinDetailComponent, CoinDetailProvider> by lazy {
+                SingletonHolder<CoinDetailComponent, CoinDetailProvider> {
                     DaggerCoinDetailComponent.factory()
-                        .create(it)
+                        .create(it.currencyFlowProvider, it.id)
                 }
             }
         }

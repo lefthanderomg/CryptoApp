@@ -9,4 +9,5 @@ interface CoinDetail {
     val slug: String?
     val description: String?
     val dateAdded: String?
+    val usd: USD?
 }

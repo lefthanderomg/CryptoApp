@@ -1,6 +1,6 @@
 package andrey.murzin.repository.entity
 
-import andrey.murzin.core.model.USDEntity
+import andrey.murzin.core.model.USD
 
 data class USDEntity(
     override val lastUpdated: String?,
@@ -10,4 +10,4 @@ data class USDEntity(
     override val percentChange7d: Double?,
     override val price: Double?,
     override val volume24h: Double?
-) : USDEntity
+) : USD

@@ -1,5 +1,6 @@
 package andrey.murzin.network.api
 
+import andrey.murzin.network.model.BaseResponse
 import andrey.murzin.network.model.CoinDetailModel
 import andrey.murzin.network.model.CurrencyResultModel
 import io.reactivex.Observable
@@ -13,4 +14,7 @@ interface CoinMarketApi {
 
     @GET("cryptocurrency/info")
     fun getCoinInfo(@Query("id") id: Int): Observable<CoinDetailModel>
+
+    @GET("cryptocurrency/quores/later")
+    fun getCoinPrice(@Query("id") id: Int): Observable<BaseResponse<CoinDetailModel>>
 }

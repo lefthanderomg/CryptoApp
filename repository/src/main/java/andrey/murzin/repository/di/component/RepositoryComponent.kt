@@ -6,11 +6,13 @@ import andrey.murzin.network.di.component.DaggerNetworkComponent
 import andrey.murzin.network.di.provider.NetworkProvider
 import andrey.murzin.repository.di.module.RepositoryModule
 import dagger.Component
+import javax.inject.Singleton
 
 @Component(
     dependencies = [DeviceProvider::class, NetworkProvider::class],
     modules = [RepositoryModule::class]
 )
+@Singleton
 interface RepositoryComponent : RepositoryProvider {
     class Initializer private constructor() {
         companion object {

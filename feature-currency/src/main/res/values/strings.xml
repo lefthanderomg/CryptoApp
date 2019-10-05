@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">screen-currency</string>
+    <string name="buy">Buy</string>
 </resources>
