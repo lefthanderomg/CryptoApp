@@ -4,10 +4,12 @@ import andrey.murzin.core.routing.StartPurchaseFlow
 import andrey.murzin.core.utils.Logger
 import andrey.murzin.core_ui.base.BaseViewModel
 import andrey.murzin.feature_coin_detail.domain.GetCoinInfoUseCase
+import andrey.murzin.screen_currency.screen.list.CurrencyListViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 class CoinDetailViewModel @Inject constructor(
@@ -21,6 +23,8 @@ class CoinDetailViewModel @Inject constructor(
         private const val TAG = "CoinDetailViewModel"
     }
 
+    private val retryDataSignal = PublishSubject.create<Unit>()
+
     private val coinDetailLiveData: MutableLiveData<CoinDetailViewState> by lazy {
         MutableLiveData<CoinDetailViewState>()
     }
@@ -31,7 +35,18 @@ class CoinDetailViewModel @Inject constructor(
 
     fun getCoinInfoLiveData(): LiveData<CoinDetailViewState> = coinDetailLiveData
 
-    fun buy() {
+    fun onAction(action: CoinDetailAction) {
+        when (action) {
+            is CoinDetailAction.BuyCoin -> buy()
+            is CoinDetailAction.Retry -> retryData()
+        }
+    }
+
+    private fun retryData() {
+        retryDataSignal.onNext(Unit)
+    }
+
+    private fun buy() {
         startPurchaseFlow.start(id)
     }
 
@@ -41,6 +56,7 @@ class CoinDetailViewModel @Inject constructor(
                 CoinDetailViewState(
                     data = it,
                     loading = false,
+                    retry = false,
                     error = ""
                 )
             }
@@ -51,6 +67,7 @@ class CoinDetailViewModel @Inject constructor(
                 CoinDetailViewState.createErrorState(it.message ?: "")
             }
             .doOnNext { coinDetailLiveData.value = it }
+            .repeatWhen { retryDataSignal }
             .subscribe({}, {
                 logger.d("$TAG getCoinInfo ${it.message}")
             }).connect()

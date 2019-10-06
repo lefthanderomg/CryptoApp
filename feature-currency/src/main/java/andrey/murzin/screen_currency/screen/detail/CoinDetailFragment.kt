@@ -2,6 +2,7 @@ package andrey.murzin.screen_currency.screen.detail
 
 import andrey.murzin.core.model.CoinDetail
 import andrey.murzin.core.routing.FlowRouter
+import andrey.murzin.core.utils.Logger
 import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.core_ui.ext.*
@@ -19,7 +20,7 @@ import javax.inject.Inject
 class CoinDetailFragment : BaseFragment() {
 
     companion object {
-
+        private const val TAG = "CoinDetailFragment"
         private const val ID_ARG = "ID_ARG"
 
         fun create(id: Int) = CoinDetailFragment().apply {
@@ -34,6 +35,9 @@ class CoinDetailFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelOwnerFactory: ViewModelOwnerFactory
+
+    @Inject
+    lateinit var logger: Logger
 
     private lateinit var viewModel: CoinDetailViewModel
 
@@ -65,18 +69,33 @@ class CoinDetailFragment : BaseFragment() {
         viewModel.getCoinInfoLiveData().observe(
             viewLifecycleOwner,
             Observer {
+                logger.d("$TAG $it")
                 showLoad(it.loading)
                 showData(it.data)
+                if (it.loading.not()){
+                    showRetry(it.retry)
+                }
             }
         )
         btnBuy.setOnClickListener {
-            viewModel.buy()
+            viewModel.onAction(CoinDetailAction.BuyCoin)
+        }
+        btnRetry.setOnClickListener {
+            viewModel.onAction(CoinDetailAction.Retry)
         }
     }
 
     private fun showLoad(flag: Boolean) {
         progressBar.setVisible(flag)
-        btnBuy.setVisible(flag.not())
+        if (flag) {
+            btnBuy.setVisible(flag.not())
+            btnRetry.setVisible(flag.not())
+        }
+    }
+
+    private fun showRetry(retry: Boolean) {
+        btnRetry.setVisible(retry)
+        btnBuy.setVisible(retry.not())
     }
 
     private fun showData(data: CoinDetail?) {

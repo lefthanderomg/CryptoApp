@@ -1,9 +1,9 @@
-//package andrey.murzin.core_ui.base
+package andrey.murzin.core_ui.base
 //
 //import andrey.murzin.core_ui.model.ViewState
 //import androidx.lifecycle.MutableLiveData
 //
-//class StateLiveData<T> : MutableLiveData<ViewState<T>>() {
+//class SingleLiveData<T> : MutableLiveData<Any>() {
 //
 //    override fun setValue(value: ViewState<T>?) {
 //        super.setValue(value)

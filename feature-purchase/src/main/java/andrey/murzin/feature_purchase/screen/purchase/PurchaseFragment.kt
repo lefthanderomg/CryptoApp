@@ -42,7 +42,7 @@ class PurchaseFragment : BaseFragment() {
     override fun getLayoutResId(): Int = R.layout.fragment_purchase
 
     override fun onBackPressed() {
-        flowRouter.exit()
+        flowRouter.finishFlow()
     }
 
     override fun inject() {

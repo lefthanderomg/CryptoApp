@@ -39,7 +39,7 @@ class CurrencyListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = getViewModel(viewModelOwnerFactory)
         swipeRefreshLayout.setOnRefreshListener {
-            viewModel.refreshData()
+            viewModel.onAction(CurrencyListAction.Retry)
         }
         initCurrencyList()
     }
@@ -61,7 +61,7 @@ class CurrencyListFragment : BaseFragment() {
 
     private fun initCurrencyList() {
         val currencyListAdapter = CurrencyListAdapter(context!!) {
-            viewModel.goCoinDetail(it)
+            viewModel.onAction(CurrencyListAction.NavigateDetail(it))
         }
 
         with(rvCurrencyList) {

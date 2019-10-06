@@ -35,12 +35,21 @@ class CurrencyListViewModel @Inject constructor(
         getCurrencyList()
     }
 
-    fun refreshData() {
+    fun onAction(action: CurrencyListAction) {
+        when (action) {
+            is CurrencyListAction.Retry -> refreshData()
+            is CurrencyListAction.NavigateDetail -> goCoinDetail(action.coin)
+        }
+    }
+
+    fun getCurrency(): LiveData<CurrencyListViewState> = currencyLiveData
+
+    private fun refreshData() {
         logger.d(TAG)
         refreshSignal.onNext(Unit)
     }
 
-    fun goCoinDetail(coin: Coin) {
+    private fun goCoinDetail(coin: Coin) {
         coin.id?.let { id ->
             saveCoinUseCase.saveCoin(coin)
                 .subscribeOn(Schedulers.io())
@@ -50,8 +59,6 @@ class CurrencyListViewModel @Inject constructor(
                 }, {}).connect()
         }
     }
-
-    fun getCurrency(): LiveData<CurrencyListViewState> = currencyLiveData
 
     private fun getCurrencyList() {
         getCurrencyListUseCase.getCurrencyList()
