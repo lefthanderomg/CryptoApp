@@ -23,6 +23,6 @@ abstract class ViewModelPurchaseFactoryModule {
     @IntoMap
     @ViewModelKey(PurchaseViewModel::class)
     abstract fun bindCryptoCurrencyViewModel(
-        coinDetailViewModel: PurchaseViewModel
+        viewModel: PurchaseViewModel
     ): ViewModel
 }

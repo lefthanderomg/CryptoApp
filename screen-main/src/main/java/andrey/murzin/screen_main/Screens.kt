@@ -12,8 +12,8 @@ object Screens {
             BottomNavigationFragment()
     }
 
-    object PurchaseFlow: SupportAppScreen(){
+    data class PurchaseFlow(val id: Int) : SupportAppScreen() {
         override fun getFragment(): Fragment =
-            PurchaseFlowFragment()
+            PurchaseFlowFragment.create(id)
     }
 }

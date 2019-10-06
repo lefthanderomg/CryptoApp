@@ -9,7 +9,7 @@ class StartPurchaseFlowImpl @Inject constructor(
     private val router: Router
 ) : StartPurchaseFlow {
 
-    override fun start() {
-        router.navigateTo(Screens.PurchaseFlow)
+    override fun start(id: Int) {
+        router.navigateTo(Screens.PurchaseFlow(id))
     }
 }

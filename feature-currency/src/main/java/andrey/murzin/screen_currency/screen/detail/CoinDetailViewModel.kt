@@ -15,7 +15,7 @@ class CoinDetailViewModel @Inject constructor(
     private val getCoinInfoUseCase: GetCoinInfoUseCase,
     private val logger: Logger,
     private val startPurchaseFlow: StartPurchaseFlow,
-    id: Int
+    private val id: Int
 ) : BaseViewModel() {
 
     companion object {
@@ -33,7 +33,7 @@ class CoinDetailViewModel @Inject constructor(
     fun getCoinInfoLiveData() = coinDetailLiveData
 
     fun buy() {
-        startPurchaseFlow.start()
+        startPurchaseFlow.start(id)
     }
 
     private fun getCoinInfo(id: Int) {

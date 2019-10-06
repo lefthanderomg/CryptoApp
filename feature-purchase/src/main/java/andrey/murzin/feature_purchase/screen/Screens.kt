@@ -6,7 +6,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
 
-    object PurchaseScreen : SupportAppScreen() {
-        override fun getFragment(): Fragment = PurchaseFragment()
+    data class PurchaseScreen(val id: Int) : SupportAppScreen() {
+        override fun getFragment(): Fragment = PurchaseFragment.create(id)
     }
 }

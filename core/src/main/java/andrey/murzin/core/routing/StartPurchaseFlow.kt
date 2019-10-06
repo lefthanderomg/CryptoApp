@@ -1,5 +1,5 @@
 package andrey.murzin.core.routing
 
 interface StartPurchaseFlow {
-    fun start()
+    fun start(id: Int)
 }
