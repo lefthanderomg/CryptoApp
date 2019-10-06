@@ -1,12 +1,11 @@
 package andrey.murzin.screen_currency.screen.detail
 
 import andrey.murzin.core.model.CoinDetail
+import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.core_ui.ext.*
-import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.core_utils.argument
-import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.screen.detail.di.component.CoinDetailComponent
 import andrey.murzin.screen_currency.screen.detail.di.provider.CoinDetailInjector
@@ -66,19 +65,8 @@ class CoinDetailFragment : BaseFragment() {
         viewModel.getCoinInfoLiveData().observe(
             viewLifecycleOwner,
             Observer {
-                when (it) {
-                    is ViewState.Loading -> {
-                        showLoad(true)
-                    }
-                    is ViewState.Data<CoinDetail> -> {
-                        showData(it.data)
-                        showLoad(false)
-                    }
-                    is ViewState.Error -> {
-                        showLoad(false)
-                        showMessage(it.message)
-                    }
-                }
+                showLoad(it.loading)
+                showData(it.data)
             }
         )
         btnBuy.setOnClickListener {
@@ -91,13 +79,15 @@ class CoinDetailFragment : BaseFragment() {
         btnBuy.setVisible(flag.not())
     }
 
-    private fun showData(data: CoinDetail) {
-        context?.let {
-            imgIcon.load(it, data.logo ?: "")
+    private fun showData(data: CoinDetail?) {
+        data?.let {
+            context?.let {
+                imgIcon.load(it, data.logo ?: "")
+            }
+            tvName.safeSetText(data.name ?: "")
+            tvSymbol.safeSetText(data.symbol ?: "")
+            tvPrice.safeSetText(data.usd?.price?.toPrice() ?: "")
+            tvDescription.safeSetText(data.description ?: "")
         }
-        tvName.text = data.name ?: ""
-        tvSymbol.text = data.symbol ?: ""
-        tvPrice.text = data.usd?.price?.toPrice() ?: ""
-        tvDescription.text = data.description ?: ""
     }
 }

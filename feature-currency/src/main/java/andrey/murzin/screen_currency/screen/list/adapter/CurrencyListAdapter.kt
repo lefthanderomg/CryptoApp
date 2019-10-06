@@ -9,35 +9,29 @@ import andrey.murzin.screen_currency.R
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_currency.view.*
 import javax.inject.Inject
 
-class CurrencyListAdapterDelegate @Inject constructor(
+class CurrencyListAdapter @Inject constructor(
     private val parentContext: Context,
     private val clickListener: (Coin) -> Unit
-) : AdapterDelegate<List<Coin>>() {
-    override fun onBindViewHolder(
-        items: List<Coin>,
-        position: Int,
-        holder: RecyclerView.ViewHolder,
-        payloads: MutableList<Any>
-    ) {
-        (holder as? ViewHolder)?.bind(items[position])
-    }
+) : ListAdapter<Coin, CurrencyListAdapter.ViewHolder>(CoinDiffUtil()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(parent.inflate(R.layout.item_currency))
 
-    override fun isForViewType(items: List<Coin>, position: Int): Boolean = true
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
 
     inner class ViewHolder(
         override val containerView: View
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        private lateinit var data : Coin
+        private lateinit var data: Coin
 
         init {
             containerView.setOnClickListener {

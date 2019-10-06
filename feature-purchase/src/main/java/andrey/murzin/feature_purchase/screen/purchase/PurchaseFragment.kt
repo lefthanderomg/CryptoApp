@@ -5,7 +5,6 @@ import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.core_ui.ext.*
-import andrey.murzin.core_ui.model.ViewState
 import andrey.murzin.core_utils.argument
 import andrey.murzin.feature_purchase.R
 import andrey.murzin.feature_purchase.screen.flow.provider.PurchaseFlowHolder
@@ -56,34 +55,27 @@ class PurchaseFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = getViewModel(viewModelOwnerFactory)
         viewModel.purchaseLiveData().observe(
             viewLifecycleOwner,
             Observer {
-                when (it) {
-                    is ViewState.Loading -> {
-                        showLoad(true)
-                    }
-                    is ViewState.Data<CoinDetail> -> {
-                        showData(it.data)
-                        showLoad(false)
-                    }
-                    is ViewState.Error -> {
-                        showLoad(false)
-                        showMessage(it.message)
-                    }
-                }
+                showData(it.data)
+                showLoad(it.loading)
             }
         )
+        btnBuy.setOnClickListener {
+            viewModel.buy()
+        }
     }
 
-    private fun showData(data: CoinDetail) {
-        context?.let {
-            imgIcon.load(it, data.logo ?: "")
+    private fun showData(data: CoinDetail?) {
+        data?.let {
+            context?.let {
+                imgIcon.load(it, data.logo ?: "")
+            }
+            tvName.safeSetText(data.name ?: "")
+            tvPrice.safeSetText(data.usd?.price?.toPrice() ?: "")
         }
-        tvName.text = data.name ?: ""
-        tvPrice.text = data.usd?.price?.toPrice() ?: ""
     }
 
     private fun showLoad(flag: Boolean) {

@@ -1,14 +1,14 @@
 package andrey.murzin.screen_currency.screen.list
 
 import andrey.murzin.core.model.Coin
+import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.core.utils.Logger
 import andrey.murzin.core_ui.base.BaseViewModel
-import andrey.murzin.core_ui.base.StateLiveData
-import andrey.murzin.core_ui.model.ViewState
-import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.screen_currency.Screens
 import andrey.murzin.screen_currency.domain.usecase.currencylist.GetCurrencyListUseCase
 import andrey.murzin.screen_currency.domain.usecase.savecoin.SaveCoinUseCase
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -27,8 +27,8 @@ class CurrencyListViewModel @Inject constructor(
 
     private val refreshSignal = PublishSubject.create<Unit>()
 
-    private val currencyLiveData: StateLiveData<List<Coin>> by lazy {
-        StateLiveData<List<Coin>>()
+    private val currencyLiveData: MutableLiveData<CurrencyListViewState> by lazy {
+        MutableLiveData<CurrencyListViewState>()
     }
 
     init {
@@ -51,17 +51,23 @@ class CurrencyListViewModel @Inject constructor(
         }
     }
 
-    fun getCurrency() = currencyLiveData
+    fun getCurrency(): LiveData<CurrencyListViewState> = currencyLiveData
 
     private fun getCurrencyList() {
         getCurrencyListUseCase.getCurrencyList()
-            .map { ViewState.Data<List<Coin>>(it) as ViewState<List<Coin>> }
+            .map {
+                CurrencyListViewState(
+                    data = it,
+                    loading = false,
+                    error = ""
+                )
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .startWith(ViewState.Loading())
+            .startWith(CurrencyListViewState.createLoadingState())
             .onErrorReturn {
                 logger.d("$TAG ${it.printStackTrace()}")
-                ViewState.Error(it.message ?: "")
+                CurrencyListViewState.createErrorState(it.message ?: "")
             }
             .doOnNext { currencyLiveData.value = it }
             .repeatWhen { refreshSignal }
