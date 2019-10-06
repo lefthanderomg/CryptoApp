@@ -1,4 +1,4 @@
-package andrey.murzin.screen_currency.domain.usecase.coininfo
+package andrey.murzin.feature_coin_detail.domain
 
 import andrey.murzin.core.model.CoinDetail
 import andrey.murzin.core.repository.CoinRepository

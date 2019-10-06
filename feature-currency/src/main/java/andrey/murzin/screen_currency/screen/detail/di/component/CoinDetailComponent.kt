@@ -2,8 +2,8 @@ package andrey.murzin.screen_currency.screen.detail.di.component
 
 import andrey.murzin.core.di.scope.ScreenScope
 import andrey.murzin.core.utils.singleton.SingletonHolder
+import andrey.murzin.feature_coin_detail.di.provider.CoinInfoProvider
 import andrey.murzin.screen_currency.screen.detail.CoinDetailFragment
-import andrey.murzin.screen_currency.screen.detail.di.module.CoinDetailModule
 import andrey.murzin.screen_currency.screen.detail.di.module.ViewModelCoinInfoFactoryModule
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
 import dagger.BindsInstance
@@ -14,7 +14,6 @@ import dagger.Component
         CurrencyFlowProvider::class
     ],
     modules = [
-        CoinDetailModule::class,
         ViewModelCoinInfoFactoryModule::class
     ]
 )

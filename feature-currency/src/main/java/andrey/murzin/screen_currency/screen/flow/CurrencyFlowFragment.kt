@@ -2,10 +2,12 @@ package andrey.murzin.screen_currency.screen.flow
 
 import andrey.murzin.core.di.holder.ActivityToolsHolder
 import andrey.murzin.core_ui.base.BaseFlowFragment
+import andrey.murzin.feature_coin_detail.di.component.CoinInfoComponent
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.Screens
 import andrey.murzin.screen_currency.screen.flow.di.component.CurrencyFlowComponent
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowHolder
+import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowInjector
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowProvider
 import android.os.Bundle
 import android.view.View
@@ -36,7 +38,12 @@ class CurrencyFlowFragment : BaseFlowFragment(), CurrencyFlowHolder {
     private fun getOrCreateComponent(): CurrencyFlowComponent {
         val parentComponentHolder = activity as ActivityToolsHolder
         return CurrencyFlowComponent.Initializer.componentInstance.init(
-            parentComponentHolder.getActivityToolsProvider()
+            CurrencyFlowInjector(
+                parentComponentHolder.getActivityToolsProvider(),
+                CoinInfoComponent.Initializer.componentInstance.init(
+                    parentComponentHolder.getActivityToolsProvider()
+                )
+            )
         )
     }
 }

@@ -6,7 +6,7 @@ import andrey.murzin.core.utils.Logger
 import andrey.murzin.core_ui.base.BaseViewModel
 import andrey.murzin.core_ui.base.StateLiveData
 import andrey.murzin.core_ui.model.ViewState
-import andrey.murzin.screen_currency.domain.usecase.coininfo.GetCoinInfoUseCase
+import andrey.murzin.feature_coin_detail.domain.GetCoinInfoUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject

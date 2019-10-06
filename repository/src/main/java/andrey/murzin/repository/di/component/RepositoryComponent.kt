@@ -16,7 +16,6 @@ import javax.inject.Singleton
 interface RepositoryComponent : RepositoryProvider {
     class Initializer private constructor() {
         companion object {
-
             fun init(deviceProvider: DeviceProvider): RepositoryProvider {
 
                 val networkProvider: NetworkProvider = DaggerNetworkComponent.builder()

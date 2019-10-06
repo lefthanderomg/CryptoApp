@@ -5,6 +5,7 @@ import andrey.murzin.core.model.CoinDetail
 import andrey.murzin.core.repository.CoinRepository
 import andrey.murzin.network.api.CoinMarketApi
 import andrey.murzin.network.model.CoinDetailModel
+import andrey.murzin.repository.cache.LocalCoinCache
 import andrey.murzin.repository.mapper.CoinDetailMapper
 import andrey.murzin.repository.mapper.CoinMapper
 import io.reactivex.Completable
@@ -16,15 +17,12 @@ import javax.inject.Inject
 class CoinRepositoryImpl @Inject constructor(
     private val coinMarketApi: CoinMarketApi,
     private val coinMapper: CoinMapper,
-    private val coinDetailMapper: CoinDetailMapper
+    private val coinDetailMapper: CoinDetailMapper,
+    private val localCoinCache: LocalCoinCache
 ) : CoinRepository {
 
-    private val coinCache: ReplaySubject<Coin> = ReplaySubject.createWithSize(1)
 
-    override fun saveCoin(coin: Coin): Completable =
-        Completable.fromCallable {
-            coinCache.onNext(coin)
-        }
+    override fun saveCoin(coin: Coin): Completable = localCoinCache.saveCoin(coin)
 
     override fun getCurrencyList(): Observable<List<Coin>> =
         coinMarketApi.getCurrencyList()
@@ -40,11 +38,16 @@ class CoinRepositoryImpl @Inject constructor(
             .toObservable()
 
     override fun getCoinInfo(id: Int): Observable<CoinDetail> =
-        Observable.zip(
-            coinMarketApi.getCoinInfo(id),
-            coinCache,
-            BiFunction { coinDetailModel: CoinDetailModel, coin: Coin ->
-                return@BiFunction coinDetailMapper.toEntity(coinDetailModel, coin)
-            }
-        )
+        localCoinCache.getCoinDetail(id)
+            .onErrorResumeNext(
+                Observable.zip(
+                    coinMarketApi.getCoinInfo(id),
+                    localCoinCache.getCoin(),
+                    BiFunction { coinDetailModel: CoinDetailModel, coin: Coin ->
+                        return@BiFunction coinDetailMapper.toEntity(coinDetailModel, coin)
+                    }
+                ).flatMap {
+                    localCoinCache.saveCoinDetail(it)
+                }
+            )
 }
