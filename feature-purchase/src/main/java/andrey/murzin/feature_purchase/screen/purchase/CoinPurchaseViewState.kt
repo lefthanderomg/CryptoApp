@@ -6,21 +6,63 @@ import andrey.murzin.core_ui.model.ViewState
 data class CoinPurchaseViewState(
     val data: CoinDetail?,
     val loading: Boolean,
+    val buyCoin: Int,
+    val retry: Retry,
     val error: String
 ) : ViewState {
     companion object {
-        fun createLoadingState() =
+        fun createDataState(data: CoinDetail) =
             CoinPurchaseViewState(
-                data = null,
-                loading = true,
-                error = ""
+                data = data,
+                loading = false,
+                retry = Retry(false, RetryType.NONE),
+                error = "",
+                buyCoin = 0
             )
 
-        fun createErrorState(error: String) =
+        fun createDataState(data: CoinDetail?, buyCoin: Int) =
             CoinPurchaseViewState(
-                data = null,
+                data = data,
                 loading = false,
-                error = error
+                retry = Retry(false, RetryType.NONE),
+                error = "",
+                buyCoin = buyCoin
             )
+
+        fun createLoadingState(oldState: CoinPurchaseViewState? = null) =
+            CoinPurchaseViewState(
+                data = oldState?.data,
+                loading = true,
+                retry = Retry(false, RetryType.NONE),
+                error = "",
+                buyCoin = oldState?.buyCoin ?: 0
+            )
+
+        fun createErrorState(
+            error: String,
+            retryType: RetryType,
+            oldState: CoinPurchaseViewState? = null
+        ) =
+            CoinPurchaseViewState(
+                data = oldState?.data,
+                loading = false,
+                retry = Retry(
+                    true,
+                    retryType
+                ),
+                error = error,
+                buyCoin = oldState?.buyCoin ?: 0
+            )
+    }
+
+    data class Retry(
+        val retry: Boolean,
+        val type: RetryType
+    )
+
+    enum class RetryType {
+        BUY,
+        COIN_INFO,
+        NONE
     }
 }

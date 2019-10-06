@@ -2,6 +2,7 @@ package andrey.murzin.feature_purchase.screen.purchase
 
 import andrey.murzin.core.model.CoinDetail
 import andrey.murzin.core.routing.FlowRouter
+import andrey.murzin.core.utils.Logger
 import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core_ui.base.BaseFragment
 import andrey.murzin.core_ui.ext.*
@@ -19,7 +20,7 @@ import javax.inject.Inject
 class PurchaseFragment : BaseFragment() {
 
     companion object {
-
+        private const val TAG = "PurchaseFragment"
         private const val ARG_ID = "ARG_ID"
 
         fun create(id: Int) = PurchaseFragment().apply {
@@ -31,6 +32,9 @@ class PurchaseFragment : BaseFragment() {
 
     @Inject
     lateinit var flowRouter: FlowRouter
+
+    @Inject
+    lateinit var logger: Logger
 
     @Inject
     lateinit var viewModelOwnerFactory: ViewModelOwnerFactory
@@ -59,27 +63,39 @@ class PurchaseFragment : BaseFragment() {
         viewModel.purchaseLiveData().observe(
             viewLifecycleOwner,
             Observer {
-                showData(it.data)
+                logger.d("$TAG $it")
                 showLoad(it.loading)
+                if (it.loading.not()) {
+                    showRetry(it.loading)
+                }
+                showData(it.data, it.buyCoin)
+
             }
         )
         btnBuy.setOnClickListener {
-            viewModel.buy()
+            viewModel.onAction(CoinPurchaseAction.BuyCoin)
         }
     }
 
-    private fun showData(data: CoinDetail?) {
+    private fun showLoad(flag: Boolean) {
+        progressBar.setVisible(flag)
+    }
+
+    private fun showRetry(retry: Boolean) {
+        btnRetry.setVisible(retry)
+        btnBuy.setVisible(retry.not())
+        tvCount.setVisible(retry.not())
+    }
+
+    private fun showData(data: CoinDetail?, buyCount: Int) {
         data?.let {
             context?.let {
                 imgIcon.load(it, data.logo ?: "")
             }
             tvName.safeSetText(data.name ?: "")
             tvPrice.safeSetText(data.usd?.price?.toPrice() ?: "")
+            tvCount.safeSetText(resources.getString(R.string.buy_coin, buyCount))
         }
-    }
-
-    private fun showLoad(flag: Boolean) {
-        progressBar.setVisible(flag)
     }
 
     private fun getOrCreateComponent(): PurchaseComponent {

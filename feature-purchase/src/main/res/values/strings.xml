@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">feature-purchase</string>
     <string name="buy">Buy</string>
+    <string name="buy_coin">total coins bought %d</string>
 </resources>
