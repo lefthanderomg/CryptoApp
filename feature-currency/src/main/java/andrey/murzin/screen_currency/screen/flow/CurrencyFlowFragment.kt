@@ -28,11 +28,8 @@ class CurrencyFlowFragment : BaseFlowFragment(), CurrencyFlowHolder {
 
     override fun getCurrentFlowProvider(): CurrencyFlowProvider = getOrCreateComponent()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        if (childFragmentManager.fragments.isEmpty()) {
-            flowRouter.newRootScreen(Screens.CurrencyListScreen)
-        }
+    override fun initialScreen() {
+        flowRouter.newRootScreen(Screens.CurrencyListScreen)
     }
 
     private fun getOrCreateComponent(): CurrencyFlowComponent {

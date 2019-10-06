@@ -2,6 +2,8 @@ package andrey.murzin.core_ui.base
 
 import andrey.murzin.core.di.module.FlowNavigationModule
 import andrey.murzin.core.routing.FlowRouter
+import android.os.Bundle
+import android.view.View
 import androidx.annotation.IdRes
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -43,4 +45,13 @@ abstract class BaseFlowFragment : BaseFragment() {
         super.onPause()
         navigatorHolder.setNavigator(navigator)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (childFragmentManager.fragments.isEmpty()) {
+            initialScreen()
+        }
+    }
+
+    abstract fun initialScreen()
 }

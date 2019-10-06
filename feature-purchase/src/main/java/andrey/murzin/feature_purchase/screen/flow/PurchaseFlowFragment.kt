@@ -24,6 +24,9 @@ class PurchaseFlowFragment : BaseFlowFragment(), PurchaseFlowHolder {
     override fun getLayoutResId(): Int =
         R.layout.fragment_purchase_flow
 
+    override fun initialScreen() {
+
+    }
 
     private fun getOrCreateComponent(): PurchaseFlowComponent {
         val parentComponentHolder = activity as ActivityToolsHolder
