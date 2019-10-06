@@ -2,8 +2,11 @@ package andrey.murzin.feature_purchase.screen.flow
 
 import andrey.murzin.core.di.holder.ActivityToolsHolder
 import andrey.murzin.core_ui.base.BaseFlowFragment
+import andrey.murzin.feature_coin_detail.di.component.CoinInfoComponent
 import andrey.murzin.feature_purchase.R
+import andrey.murzin.feature_purchase.screen.Screens
 import andrey.murzin.feature_purchase.screen.flow.di.PurchaseFlowComponent
+import andrey.murzin.feature_purchase.screen.flow.provider.CoinInfoInjector
 import andrey.murzin.feature_purchase.screen.flow.provider.PurchaseFlowHolder
 import andrey.murzin.feature_purchase.screen.flow.provider.PurchaseFlowProvider
 
@@ -25,13 +28,18 @@ class PurchaseFlowFragment : BaseFlowFragment(), PurchaseFlowHolder {
         R.layout.fragment_purchase_flow
 
     override fun initialScreen() {
-
+        flowRouter.newRootScreen(Screens.PurchaseScreen)
     }
 
     private fun getOrCreateComponent(): PurchaseFlowComponent {
         val parentComponentHolder = activity as ActivityToolsHolder
         return PurchaseFlowComponent.Initializer.componentInstance.init(
-            parentComponentHolder.getActivityToolsProvider()
+            CoinInfoInjector(
+                parentComponentHolder.getActivityToolsProvider(),
+                CoinInfoComponent.Initializer.componentInstance.init(
+                    parentComponentHolder.getActivityToolsProvider()
+                )
+            )
         )
     }
 }

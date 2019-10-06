@@ -1,6 +1,7 @@
 package andrey.murzin.screen_currency.screen.list
 
 import andrey.murzin.core.model.Coin
+import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.core.utils.Logger
 import andrey.murzin.core_ui.ViewModelOwnerFactory
 import andrey.murzin.core_ui.base.BaseFragment
@@ -34,6 +35,9 @@ class CurrencyListFragment : BaseFragment() {
     @Inject
     lateinit var logger: Logger
 
+    @Inject
+    lateinit var flowRouter: FlowRouter
+
     private lateinit var viewModel: CurrencyListViewModel
 
     override fun getLayoutResId(): Int = R.layout.fragment_currency_list
@@ -55,7 +59,7 @@ class CurrencyListFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
-
+        flowRouter.exit()
     }
 
     override fun clearScope() {
@@ -65,7 +69,7 @@ class CurrencyListFragment : BaseFragment() {
     private fun initCurrencyList() {
         val currencyListAdapterDelegate = CurrencyListAdapterDelegate(
             context!!
-        ) {coin->
+        ) { coin ->
             viewModel.goCoinDetail(coin)
         }
         val delegatesManager =

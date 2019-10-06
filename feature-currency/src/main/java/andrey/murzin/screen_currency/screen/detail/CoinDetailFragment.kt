@@ -9,7 +9,7 @@ import andrey.murzin.core_utils.argument
 import andrey.murzin.core.routing.FlowRouter
 import andrey.murzin.screen_currency.R
 import andrey.murzin.screen_currency.screen.detail.di.component.CoinDetailComponent
-import andrey.murzin.screen_currency.screen.detail.di.component.CoinDetailProvider
+import andrey.murzin.screen_currency.screen.detail.di.provider.CoinDetailInjector
 import andrey.murzin.screen_currency.screen.flow.di.provider.CurrencyFlowHolder
 import android.os.Bundle
 import android.view.View
@@ -45,7 +45,7 @@ class CoinDetailFragment : BaseFragment() {
     override fun inject() {
         val parentComponent = parentFragment as CurrencyFlowHolder
         CoinDetailComponent.Initializer.componentInstance.init(
-            CoinDetailProvider(
+            CoinDetailInjector(
                 parentComponent.getCurrentFlowProvider(),
                 idCoin
             )
